@@ -1,0 +1,29 @@
+#+startup: show3levels hideblocks
+
+* STAT 5125: Computing for Statistical Data Science
+
+** Course Information
+
+- Time and Location
+	- We 11:15AM - 12:05PM, AUST 202 
+	- Mo 10:10AM - 12:05PM, AUST 445 
+  - WebEx
+		 - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][click here]]  
+     - Meeting number: 2623 292 9471
+     - Password: dG3hgSwNp25
+
+- Instructor: HaiYing (Ben) Wang
+  - Office Hours: WeMo 1:00 - 2:00PM via WebEx, or by appointment
+     - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m84b5bf05d30e2771f0530970e1e76de3][click here]]
+     - Meeting number: 2623 309 4494
+     - Password: DyMAFQPa343
+  - Office Phone: (860) 486-6142
+  - Email: haiying.wang@uconn.edu
+
+- Grader: TBA
+
+- Software:
+  - [[https://julialang.org][Julia]]
+  - [[https://github.com/julia-vscode/julia-vscode][Julia-vscode]]
+
+- [[./Syllabus.org][Syllabus]]
