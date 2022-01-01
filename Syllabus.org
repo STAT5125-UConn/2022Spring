@@ -1,0 +1,149 @@
+* *Syllabus - Spring 2022*
+<2022-01-18 Tue> - <2022-04-29 Fri>
+
+** Course Information
+
+- Time and Location
+
+	- We 11:15AM - 12:05PM, AUST 202 
+	- Mo 10:10AM - 12:05PM, AUST 445 
+  - First two weeks online through WebEx
+		 - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][click here]]  
+     - Meeting number: 2623 292 9471
+     - Password: dG3hgSwNp25
+
+- Instructor: *HaiYing (Ben) Wang*
+
+  - Office Hours: *WeMo 12:10 - 1:10PM* via WebEx, or by appointment
+     - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m84b5bf05d30e2771f0530970e1e76de3][click here]]
+     - Meeting number: 2623 309 4494
+     - Password: DyMAFQPa343
+  - Office Phone: *(860) 486-6142*
+  - Email: *haiying.wang@uconn.edu*
+  - GitHub: [[https://github.com/Ossifragus][Ossifragus]]
+
+- Grader: *TBA*
+
+  - Email:
+  - GitHub:
+
+- Course objectives: The course will provide a broad overview of principles and
+  practice of statistical computing in data science.
+
+- Course Description: Students who complete the course successfully will
+  be proficient in current statistical computing languages, data management
+  methods, and working in a collaborative development environment. The approach
+  in this class is to learn by doing. Like any topic, and especially when
+  learning a new language, it is critical to practice a lot and often. This
+  course will focus both on promoting individual student learning and fostering
+  collaborative team work to enable students to achieve goals in a domain of
+  interest. Through the course project, students will learn how to convey
+  results effectively to people with little or no background in statistics, and
+  demonstrate an understanding of ethical issues in data science.
+
+- The Julia programming language will be introduced and used.
+
+  - *Julia* is freely available at [[https://julialang.org/]]
+  - *Visual Studio Code* is freely available at [[https://code.visualstudio.com/]]
+  - *Julia-vscode*: [[https://github.com/julia-vscode/julia-vscode]]
+
+- GitHub: [[https://github.com/STAT5125-UConn/2022Spring]] \\
+  Students should "watch" this repository to receive notifications for any
+  updates. It is highly recommended that students "fork" this repository to make
+  "pull requests". Course materials such as notes and source code files will be
+  posted at this repository. Students will be given access to this repository
+  after they have registered at [[https://github.com][github.com]] and accepted the invitation to
+  homework through the invitation link:
+	
+	[[https://classroom.github.com/a/P95_VWv-]]
+
+  GitHub Classroom will be used to assign and collect homework and project.
+
+** Grading
+
+| Category                  | Weight |
+|---------------------------+--------|
+| Homework assignment       | 30%    |
+| Participation and quizzes | 20%    |
+| Project                   | 50%    |
+
+- *Homework*:
+
+  - Homework assignments will be given during the semester. Each homework
+    consists two steps: in the first step, students submit they own work; in the
+    second step students submit an assessment form on another student's work.
+  - Students may consult amongst themselves or with the instructor, but
+    each student must submit his/her own work.
+  - It is recommended that students submit homework in
+    [[https://github.github.com/gfm/][GitHub Flavored Markdown (GFM)]], although other GitHub compatible file types
+    such as Jupyter Notebooks and pdf files are also acceptable. Students should
+    also submit the Julia source codes.
+  - No credit will be given for submitted assignments exhibiting
+    duplication or copying of solutions (from peers or existing solutions).
+  - Late submissions within a 24-hour grace period will only be worth
+    50% - 95% of the points. Submissions beyond 24 hours will not be graded and
+    will receive no credit. No homework grade will be dropped.
+  - All homework assignments must be typed and submitted through the
+    GitHub.
+
+- *Participation and Quizzes*:
+
+  - We will have "active learning" in the classroom via discussion, Q&A,
+    and problem solving.
+  - There will be pop quizzes and the dates will be randomly selected.
+    If you miss a quiz, the only circumstance that you can make it up is you
+    have notified me of your time conflict with the class in advance. And it
+    must be made up within 24 hours.
+
+- *Final Project*
+
+  - There will be a final project that requires both an oral presentation and a
+    written report. More details about the project will be provided separately.
+
+** Material coverage (subject to change)
+
+1. An brief introduction to Git and GitHub.
+2. An express introduction to Julia
+3. Reproducible report generating
+4. Stochastic and statistical simulation
+5. Data processing with DataFrames
+6. Visualization
+7. Optimization
+8. Parallel and Distinguished computing
+# 9. Resampling methods
+# 10. Classification
+
+** Academic Integrity
+
+A fundamental tenet of all educational institutions is academic honesty;
+academic work depends upon respect for and acknowledgement of the research and
+ideas of others. Misrepresenting someone else's work as one's own is a serious
+offense in any academic setting and it will not be condoned. Academic misconduct
+includes, but is not limited to, providing or receiving assistance in a manner
+not authorized by the instructor in the creation of work to be submitted for
+academic evaluation (e.g. papers, projects, and examinations); any attempt to
+influence improperly (e.g. bribery, threats) any member of the faculty, staff,
+or administration of the University in any matter pertaining to academics or
+research; presenting, as one's own,the ideas or words of another for academic
+evaluation; doing unauthorized academic work for which another person will
+receive credit or be evaluated; and presenting the same or substantially the
+same papers or projects in two or more courses without the explicit permission
+of the instructors involved. A student who knowingly assists another student in
+committing an act of academic misconduct shall be equally accountable for the
+violation, and shall be subject to the sanctions and other remedies described in
+The Student Code.
+
+** Support Services
+
+- [[http://www.cmhs.uconn.edu/][Counseling and Mental Health Services]] 486-4705 (after hours, use 486-3427)
+- [[http://www.career.uconn.edu/][Career Services]] 486-3013
+- [[http://www.aod.uconn.edu/][Alcohol and Other Drug Services]] 486-9431
+- [[http://www.dos.uconn.edu/][Dean of Students Office]] 486-3426
+- [[http://www.csd.uconn.edu/][Center for Students with Disabilities]] 486-2020 (voice), 486-2077 (TDD)
+- Online Course Support: [[https://achieve.uconn.edu/online-course/]]
+- Keep Learning: [[https://onlinestudent.uconn.edu/keeplearning/]]
+
+** Disclaimer
+
+The instructor reserves the right to make changes to the syllabus as
+necessitated by circumstances.
