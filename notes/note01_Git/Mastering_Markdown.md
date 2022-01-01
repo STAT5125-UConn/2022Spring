@@ -295,9 +295,7 @@ Gist Markdown files.
 
 ### Syntax highlighting
 
-Here's an example of how you can use syntax highlighting with [GitHub
-Flavored
-Markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/):
+Here's an example of how you can use syntax highlighting with [GitHub Flavored Markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/):
 
 ```
 ```julia
