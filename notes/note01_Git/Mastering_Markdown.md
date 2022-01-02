@@ -1,12 +1,10 @@
 # Mastering Markdown
-
 Created based on [this document](https://guides.github.com/features/mastering-markdown/).
 
 Markdown is a lightweight and easy-to-use syntax
 for styling all forms of writing on the GitHub platform.
 
 ## What is Markdown?
-
 <!-- https://www.markdowntutorial.com/ -->
 
 [Markdown](http://daringfireball.net/projects/markdown/) is a way to
@@ -18,9 +16,9 @@ like `#` or `*`.
 
 You can use Markdown most places around GitHub:
 
-- [Gists](https://gist.github.com/)
-- Comments in Issues and Pull Requests
-- Files with the `.md` or `.markdown` extension
+-   [Gists](https://gist.github.com/)
+-   Comments in Issues and Pull Requests
+-   Files with the `.md` or `.markdown` extension
 
 For more information, see "[Writing on
 GitHub](https://help.github.com/categories/writing-on-github/)" in the
@@ -29,7 +27,6 @@ GitHub](https://help.github.com/categories/writing-on-github/)" in the
 ## Examples
 
 ### Text
-
 ```source
 It's very easy to make some words **bold** and other words *italic* with Markdown.  
 You can break a line with double spaces or "\" at the end of the line. 
@@ -37,12 +34,11 @@ You can even [link to Google!](http://google.com)
 ```
 
 It\'s very easy to make some words **bold** and other words *italic* with Markdown.  
-You can break a line with double spaces or "\" at the end of the line. 
+You can break a line with double spaces or "\" at the end of the line.\
 You can even [link to Google!](http://google.com/)
 
 ### List
-
-```source
+``` source
 Sometimes you want numbered lists:
 
 1. One
@@ -64,25 +60,24 @@ Alternatively,
 
 Sometimes you want numbered lists:
 
-1. One
-2. Two
-3. Three
+1.  One
+2.  Two
+3.  Three
 
 Sometimes you want bullet points:
 
-- Start a line with a star
-- Profit!
+-   Start a line with a star
+-   Profit!
 
 Alternatively,
 
-- Dashes work just as well
-- And if you have sub points, put two spaces before the dash or star:
-  - Like this
-  - And this
+-   Dashes work just as well
+-   And if you have sub points, put two spaces before the dash or star:
+    -   Like this
+    -   And this
 
 ### Images
-
-```source
+``` source
 If you want to embed images, this is how you do it:
 
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
@@ -93,8 +88,7 @@ If you want to embed images, this is how you do it:
 ![Image of Yakotocat](./figures/yaktocat.png)
 
 ### Headers & Quotes
-
-```source
+``` source
 # Structured documents
 
 Sometimes it's useful to have different levels of headings to structure your documents. Start lines with a `#` to create headings. Multiple `##` in a row denote smaller heading sizes.
@@ -127,7 +121,7 @@ If you'd like to quote someone, use the \> character before the line:
 
 ### Code
 
-```source
+```` source
 There are many different ways to style code with GitHub's markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you've got a longer block of code, you can indent with four spaces:
 
     if (isAwesome){
@@ -135,13 +129,13 @@ There are many different ways to style code with GitHub's markdown. If you have 
     }
 
 GitHub also supports something called code fencing, which allows for multiple lines without indentation:
-```
 
+```
 if (isAwesome){
   return true
 }
-
 ```
+
 And if you'd like to use syntax highlighting, include the language:
 
 ```javascript
@@ -149,8 +143,7 @@ if (isAwesome){
   return true
 }
 ```
-
-```
+````
 There are many different ways to style code with GitHub's markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you've got a longer block of code, you can indent with four spaces:
 
     if (isAwesome){
@@ -158,13 +151,13 @@ There are many different ways to style code with GitHub's markdown. If you have 
     }
 
 GitHub also supports something called code fencing, which allows for multiple lines without indentation:
-```
 
+```
 if (isAwesome){
   return true
 }
-
 ```
+
 And if you'd like to use syntax highlighting, include the language:
 
 ```javascript
@@ -174,8 +167,7 @@ if (isAwesome){
 ```
 
 ### Extras
-
-```source
+``` source
 GitHub supports many extras in Markdown that help you reference and link to people. If you ever want to direct a comment at someone, you can prefix their name with an @ symbol: Hey @kneath — love your sweater!
 
 But I have to admit, tasks lists are my favorite:
@@ -196,8 +188,8 @@ sweater!
 
 But I have to admit, tasks lists are my favorite:
 
-- This is a complete item
-- This is an incomplete item
+-   This is a complete item
+-   This is an incomplete item
 
 When you include a task list in the first comment of an Issue, you will
 see a helpful progress bar in your list of issues. It works in Pull
@@ -211,7 +203,6 @@ Here's an overview of Markdown syntax that you can use anywhere on
 GitHub.com or in your own text files.
 
 ### Headers
-
 ```
 # This is an <h1> tag
 ## This is an <h2> tag
@@ -219,7 +210,6 @@ GitHub.com or in your own text files.
 ```
 
 ### Emphasis
-
 ```
 *This text will be italic*
 _This will also be italic_
@@ -233,7 +223,6 @@ _You **can** combine them_
 ### Lists
 
 #### Unordered
-
 ```
 * Item 1
 * Item 2
@@ -242,7 +231,6 @@ _You **can** combine them_
 ```
 
 #### Ordered
-
 ```
 1. Item 1
 1. Item 2
@@ -252,21 +240,18 @@ _You **can** combine them_
 ```
 
 ### Images
-
 ```
 ![GitHub Logo](/images/logo.png)
 Format: ![Alt Text](url)
 ```
 
 ### Links
-
 ```
 http://github.com - automatic!
 [GitHub](http://github.com)
 ```
 
 ### Blockquotes
-
 ```
 As Kanye West said:
 
@@ -295,9 +280,11 @@ Gist Markdown files.
 
 ### Syntax highlighting
 
-Here's an example of how you can use syntax highlighting with [GitHub Flavored Markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/):
+Here's an example of how you can use syntax highlighting with [GitHub
+Flavored
+Markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/):
 
-```
+````
 ```julia
 function fsum(x)
     n = length(x)
@@ -308,8 +295,8 @@ function fsum(x)
     return s
 end
 ```
+````
 
-```
 ```julia
 function fsum(x)
     n = length(x)
@@ -330,6 +317,7 @@ end
 - [ ] this is an incomplete item
 ```
 
+
 If you include a task list in the first comment of an Issue, you will
 get a handy progress indicator in your issue list. It also works in Pull
 Requests!
@@ -348,12 +336,14 @@ Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
 ```
 
+
 Would become:
 
-| First Header                | Second Header                |
-| --------------------------- | ---------------------------- |
-| Content from cell 1         | Content from cell 2          |
-| Content in the first column | Content in the second column |
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
 
 ### Username \@mentions
 

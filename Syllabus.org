@@ -4,26 +4,17 @@
 ** Course Information
 
 - Time and Location
-
-	- We 11:15AM - 12:05PM, AUST 202 
-	- Mo 10:10AM - 12:05PM, AUST 445 
-  - First two weeks online through WebEx
-		 - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][click here]]  
-     - Meeting number: 2623 292 9471
-     - Password: dG3hgSwNp25
+  - We 11:15AM - 12:05PM, AUST 202 
+  - Mo 10:10AM - 12:05PM, AUST 445
+  - First two weeks online through this [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][WebEx Link]]  
 
 - Instructor: *HaiYing (Ben) Wang*
-
-  - Office Hours: *WeMo 12:10 - 1:10PM* via WebEx, or by appointment
-     - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m84b5bf05d30e2771f0530970e1e76de3][click here]]
-     - Meeting number: 2623 309 4494
-     - Password: DyMAFQPa343
+  - Office Hours: WeMo 1:00 - 2:00PM via this [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m84b5bf05d30e2771f0530970e1e76de3][WebEx Link]], or by appointment
   - Office Phone: *(860) 486-6142*
   - Email: *haiying.wang@uconn.edu*
   - GitHub: [[https://github.com/Ossifragus][Ossifragus]]
 
 - Grader: *TBA*
-
   - Email:
   - GitHub:
 
@@ -54,8 +45,8 @@
   posted at this repository. Students will be given access to this repository
   after they have registered at [[https://github.com][github.com]] and accepted the invitation to
   homework through the invitation link:
-	
-	[[https://classroom.github.com/a/P95_VWv-]]
+  
+  [[https://classroom.github.com/a/P95_VWv-]]
 
   GitHub Classroom will be used to assign and collect homework and project.
 
@@ -147,3 +138,9 @@ The Student Code.
 
 The instructor reserves the right to make changes to the syllabus as
 necessitated by circumstances.
+
+#+startup: content hideblocks
+#+options: h:4 timestamp:nil date:nil tasks tex:t num:nil toc:nil
+#+options: author:nil creator:nil html-postamble:nil HTML_DOCTYPE:HTML5
+#+HTML_HEAD: <base target="_blank">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://ossifragus.github.io/style/github-pandoc.css"/>

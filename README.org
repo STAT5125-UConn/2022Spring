@@ -5,18 +5,12 @@
 ** Course Information
 
 - Time and Location
-	- We 11:15AM - 12:05PM, AUST 202 
-	- Mo 10:10AM - 12:05PM, AUST 445 
-  - WebEx
-		 - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][click here]]  
-     - Meeting number: 2623 292 9471
-     - Password: dG3hgSwNp25
+  - We 11:15AM - 12:05PM, AUST 202 
+  - Mo 10:10AM - 12:05PM, AUST 445 
+  - [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][WebEx Link]]  
 
 - Instructor: HaiYing (Ben) Wang
-  - Office Hours: WeMo 1:00 - 2:00PM via WebEx, or by appointment
-     - Meeting link: [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m84b5bf05d30e2771f0530970e1e76de3][click here]]
-     - Meeting number: 2623 309 4494
-     - Password: DyMAFQPa343
+  - Office Hours: WeMo 1:00 - 2:00PM via this [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m84b5bf05d30e2771f0530970e1e76de3][WebEx Link]], or by appointment
   - Office Phone: (860) 486-6142
   - Email: haiying.wang@uconn.edu
 
@@ -27,3 +21,9 @@
   - [[https://github.com/julia-vscode/julia-vscode][Julia-vscode]]
 
 - [[./Syllabus.org][Syllabus]]
+
+#+startup: content hideblocks
+#+options: h:4 timestamp:nil date:nil tasks tex:t num:nil toc:nil
+#+options: author:nil creator:nil html-postamble:nil HTML_DOCTYPE:HTML5
+#+HTML_HEAD: <base target="_blank">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://ossifragus.github.io/style/github-pandoc.css"/>
