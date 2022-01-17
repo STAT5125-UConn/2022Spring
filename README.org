@@ -14,7 +14,8 @@
   - Office Phone: (860) 486-6142
   - Email: haiying.wang@uconn.edu
 
-- Grader: TBA
+- Grader: Boyi Zhang
+  - Email: boyi.zhang@uconn.edu
 
 - Software:
   - [[https://julialang.org][Julia]]

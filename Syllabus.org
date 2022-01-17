@@ -14,9 +14,9 @@
   - Email: *haiying.wang@uconn.edu*
   - GitHub: [[https://github.com/Ossifragus][Ossifragus]]
 
-- Grader: *TBA*
-  - Email:
-  - GitHub:
+- Grader: *Boyi Zhang*
+  - Email: boyi.zhang@uconn.edu
+  - GitHub: [[https://github.com/ReleaseU][ReleaseU]]
 
 - Course objectives: The course will provide a broad overview of principles and
   practice of statistical computing in data science.
