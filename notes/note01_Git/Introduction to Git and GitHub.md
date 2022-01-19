@@ -17,9 +17,16 @@
 * `git merge`: get the files from the local repository into the working directory.
 * `git pull`: get files from the remote repository directly into the working directory. It is equivalent to a git fetch and a git merge. 
 * `git push`: add all committed files in the local repository to the remote repository. So in the remote repository, all files and changes will be visible to anyone with access to the remote repository.
+*  use `git config pull.rebase false` or `git config pull.rebase true` to set Git merging or Git rebasing with conflicts; they accept the `--global` option as well.
 
 ## Visual Studio Code (VS Code)
-The editor [VS Code](https://code.visualstudio.com/) has [builtin Git support](https://code.visualstudio.com/docs/editor/versioncontrol).
+The editor [VS Code](https://code.visualstudio.com/) has [builtin Git support](https://code.visualstudio.com/docs/editor/versioncontrol). The [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) is a powerful and feature rich extension.
+
+## Notes
+  1. Use file names compatible to all OS. 
+  2. When communicating with me about code, refer to specific lines on GitHub
+     using this style: url#L10-L15. For example, https://github.com/STAT5125-UConn/2022Spring/blob/main/notes/note01_Git/Mastering_Markdown.md?plain=1#L11-L14
+  3. You can use a file with name .gitignore in your repository and put file names in it to have Git ignore them.
 
 ## :octocat: Git and GitHub
 
