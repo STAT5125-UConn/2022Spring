@@ -1,4 +1,4 @@
-#' # A short introcuction to Julia
+#' # A short introduction to Julia
 
 #' ## Strings
 #' String operations:
