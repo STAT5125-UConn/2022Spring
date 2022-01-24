@@ -4,8 +4,7 @@
 ** Course Information
 
 - Time and Location
-  - We 11:15AM - 12:05PM, AUST 202 
-  - Mo 10:10AM - 12:05PM, AUST 445
+  - Time: *Monday 09:20AM - 12:05PM*, *AUST 434* 
   - First two weeks online through this [[https://uconn-cmr.webex.com/uconn-cmr/j.php?MTID=m37f32e6c687a59f157aef0db8199f790][WebEx Link]]  
 
 - Instructor: *HaiYing (Ben) Wang*
