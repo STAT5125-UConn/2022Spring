@@ -1,5 +1,6 @@
 # The Basics of GitHub
 
+* [Recording of Jan 26, 2022](https://uconn-cmr.webex.com/uconn-cmr/ldr.php?RCID=76267aded75a1c7ab38facd994eb1d5a)
 * [Link to download Git](https://git-scm.com/downloads) 
 * [Instruction to create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 * [Instruction to set up a SSH key](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
