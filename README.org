@@ -1,7 +1,5 @@
 #+startup: show3levels hideblocks
 
-edited from haiying's test account
-
 * STAT 5125: Computing for Statistical Data Science
 
 ** Course Information
