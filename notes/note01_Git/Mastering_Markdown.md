@@ -1,8 +1,9 @@
 # Mastering Markdown
 Created based on [this document](https://guides.github.com/features/mastering-markdown/).
 
-line 1
-line 2
+line 1  
+line 2\
+line 3
 
 Markdown is a lightweight and easy-to-use syntax
 for styling all forms of writing on the GitHub platform.
