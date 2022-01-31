@@ -7,3 +7,4 @@
 - Information about Julia VSCode [here](https://github.com/julia-vscode/julia-vscode).
 - A video of setting up Julia and VS Code environment [here](https://www.youtube.com/watch?v=PpEdwVLypXU).
 - A Julia Cheat sheet [here](https://juliadocs.github.io/Julia-Cheat-Sheet/).
+- Further reading: [The-Julia-Express](https://github.com/bkamins/The-Julia-Express).
