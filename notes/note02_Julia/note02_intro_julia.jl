@@ -1,5 +1,31 @@
 #' # A short introduction to Julia
 
+#' ## Some useful commands in Julia REPL:
+
+#' - ? (enters help mode);
+#' - ; (enters system shell mode);
+#' - ] (enters package manager mode);
+#' - Ctrl-c (interrupts computations);
+#' - Ctrl-d (exits Julia);
+#' - Ctrl-l clears screen;
+#' - putting ; after the expression will disable showing its value in REPL.
+
+#' ## Examples of some essential functions:
+pwd() # get current working directory
+# change directory to /home/ossifragus/Dropbox/teaching/5125/note02_Julia/
+cd("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/")
+# For Mac and Linux, use this format 
+# cd("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/");
+# for Windows, use this format 
+# cd("C:\\Users\\hwzq7\\Dropbox\\teaching\\5125\\notes\\note02_Julia"). 
+
+#' execute source file
+include("pi.jl") 
+
+#' exit Julia
+#+ eval=false
+exit()
+
 #' ## Strings
 #' String operations:
 "Hi " * "there!"       # string concatenation
@@ -18,7 +44,7 @@ chop(s)                # remove last character from s, returns a SubString
 #' ## Vector and Matrix
 #' Define a vector
 x = [121, 98, 95, 94, 102, 106, 112, 120, 108, 109]
-#' Define another vector
+#' Define a matrix
 xx = [123 2 3]
 #' Define a character vector
 w = ["F","M","M","F","F","M","M","F","M","M"]
@@ -47,11 +73,11 @@ size(mat2, 1)
 #' Value in the third row and the second column of mat
 mat[3,2]
 #' The first three rows of mat
-mat[1:3,:]
+mat[1:3, :]
 #' The second column of mat
-mat[:,2]
+mat[:, 2]
 #' Exclude the second row
-mat[setdiff(1:end, 2),:]
+mat[setdiff(1:end, 2), :]
 #' Exclude the second column
 mat[:,setdiff(1:end, 2)]
 
@@ -63,7 +89,7 @@ setdiff([1, 3, "true", 't', rand(3)], "true")
 # "true" will be removed
 setdiff([1, 3, "true", 't', rand(3)], ["true"])
 
-#' Take a look at the first 5 rows. The function view does not make copy of the elements of dat, but dat[1:5,:] create a new 5 by 8 matrix.
+#' Take a look at the first 5 rows. The function view does not make copy of the elements of dat, but dat[1:5, :] create a new 5 by 8 matrix.
 dat1 = mat[1:5, 1:2]
 dat2 = view(mat, 1:5, 1:2)
 
@@ -85,6 +111,7 @@ sum(x)
 sum(x[[2,3,5]])
 #' Product of all the elements in x
 convert.(Int128, [1, 2])
+Int128[1, 5]
 prod(x)
 prod(Int128.(x))
 prod(convert.(Int128, x))
@@ -111,8 +138,14 @@ elseif 1 == 2
     🍑 = 2
 else
     💔 = 3
-end        # after this 💔 = 3 and 🍎 and 🍑 are undefined
+end        # after this 💔 = 3, and 🍎 and 🍑 are undefined
+
+#' As showed above, Julia support unicode characters. 
+#' Greek letters can be input like LaTeX, e.g., 
 α = 0.05
+β = 0.8
+#' See this link for a list of tab completion of LaTeX style input:
+#' https://docs.julialang.org/en/v1/manual/unicode-input/
 
 #' ## Statistics
 using Statistics
@@ -139,10 +172,10 @@ using DelimitedFiles
 #' `path = "c:\\Users\\ossifragus\\Dropbox\\teaching\\5125\\notes\\note02_Julia"`. 
 dat = readdlm("USairpollution.csv", ',', Any, '\n')
 dat = readdlm("USairpollution.csv", ',')
-dat = readdlm("USairpollution.csv", ',', Any, '\n', header=true)
-dat = readdlm("USairpollution.csv", ',', Any, '\n', skipstart=2)
+dat = readdlm("USairpollution.csv", ',', header=true)
+dat = readdlm("USairpollution.csv", ',', skipstart=1)
 #' The complete director can also be used.
-dat = readdlm("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/USairpollution.csv", ',', Any, '\n')
+dat = readdlm("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/USairpollution.csv", ',', skipstart=1)
 #' Export dat
 writedlm("dataNew.csv", dat, ",")
 writedlm("dataNew.csv", dat)
@@ -197,11 +230,11 @@ cov(x, dims=2)
 #' ## Plot
 #' Create a histogram. The first plot takes a long time. 
 using Plots
-histogram(x[1,:])
+histogram(x[1, :])
 #' Plot the two components of x.
 plot(x')
 #' Create a scatter plot
-plot(x[1,:], x[2,:], seriestype=:scatter)
+plot(x[1, :], x[2, :], seriestype=:scatter)
 
 #' ## Loops
 x = 1:10
@@ -304,13 +337,10 @@ time_sum(x) = @time sum_arg(x);
 
 time_sum(x)
 
-#' In some situations, your function may need to allocate memory as part of its operation, and this
-#' can complicate the simple picture above. In such cases, consider using one of the [tools](@ref tools)
-#' below to diagnose problems, or write a version of your function that separates allocation from
-#' its algorithmic aspects (see [Pre-allocating outputs](@ref)).
-
 #' For more serious benchmarking, consider the [BenchmarkTools.jl](https://github.com/JuliaCI/BenchmarkTools.jl)
 #' package which among other things evaluates the function multiple times in order to reduce noise.
+
+#' See https://docs.julialang.org/en/v1/manual/performance-tips/ for more performance tips. 
 
 #' As an additional example, calculate
 
@@ -362,12 +392,12 @@ X = randn(n, 2)
 b = [2.0, 3.0]
 y = X * b .+ randn(n)
 #' Calculate the least square estimate using
-inv(X' * X) * (X' * y)
+b̂ = inv(X' * X) * (X' * y)
 b̂ = (X'X) \ (X'y) # it calculates (X' * X) \ (X' * y)
 #' or simply
 b̂ = X \ y
 #' Do NOT use 
-inv(X' * X) * X' * y
+b̂ = inv(X' * X) * X' * y
 
 #' Note that X and y are julia variables. @rput sends y and X to R with the same names
 @rput y

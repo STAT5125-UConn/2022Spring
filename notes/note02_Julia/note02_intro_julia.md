@@ -2,6 +2,46 @@
 
 
 
+## Some useful commands in Julia REPL:
+
+
+
+- ? (enters help mode);
+- ; (enters system shell mode);
+- ] (enters package manager mode);
+- Ctrl-c (interrupts computations);
+- Ctrl-d (exits Julia);
+- Ctrl-l clears screen;
+- putting ; after the expression will disable showing its value in REPL.
+
+
+
+## Examples of some essential functions:
+
+```julia
+julia> pwd() # get current working directory
+"/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia"
+
+julia> # change directory to /home/ossifragus/Dropbox/teaching/5125/note02_Julia/
+       cd("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/")
+```
+
+
+execute source file
+
+```julia
+julia> include("pi.jl")
+π = 3.1415926535897...
+```
+
+
+exit Julia
+
+```julia
+exit()
+```
+
+
 ## Strings
 String operations:
 
@@ -23,14 +63,14 @@ true
 
 julia> "\"\n\t\$"             # C-like escaping in strings, new \$ escape
        x = 123
-Main.##WeaveSandBox#312.x
+Main.##WeaveSandBox#292.x
 
 julia> "$x + 3 = $(x+3)"      # unescaped $ is used for interpolation
 "123 + 3 = 126"
 
 julia> "\$199"                # to get a $ symbol you must escape it
        s = "abc"              # a string of type String
-Main.##WeaveSandBox#312.s
+Main.##WeaveSandBox#292.s
 
 julia> chop(s)                # remove last character from s, returns a SubString
 "ab"
@@ -56,7 +96,7 @@ julia> x = [121, 98, 95, 94, 102, 106, 112, 120, 108, 109]
 ```
 
 
-Define another vector
+Define a matrix
 
 ```julia
 julia> xx = [123 2 3]
@@ -244,7 +284,7 @@ julia> mat[3,2]
 The first three rows of mat
 
 ```julia
-julia> mat[1:3,:]
+julia> mat[1:3, :]
 3×2 Matrix{Float64}:
  121.0  4.79579
   98.0  4.58497
@@ -255,7 +295,7 @@ julia> mat[1:3,:]
 The second column of mat
 
 ```julia
-julia> mat[:,2]
+julia> mat[:, 2]
 10-element Vector{Float64}:
  4.795790545596741
  4.584967478670572
@@ -273,7 +313,7 @@ julia> mat[:,2]
 Exclude the second row
 
 ```julia
-julia> mat[setdiff(1:end, 2),:]
+julia> mat[setdiff(1:end, 2), :]
 9×2 Matrix{Float64}:
  121.0  4.79579
   95.0  4.55388
@@ -318,7 +358,7 @@ julia> # 't' will be removed
  1
  3
   "true"
-  [0.07912691385919768, 0.9141143652812053, 0.4820311129267518]
+  [0.5083782655906842, 0.8444747791766258, 0.03326346897498356]
 
 julia> # "true" will be removed
        setdiff([1, 3, "true", 't', rand(3)], ["true"])
@@ -326,11 +366,11 @@ julia> # "true" will be removed
  1
  3
   't': ASCII/Unicode U+0074 (category Ll: Letter, lowercase)
-  [0.8374988274984555, 0.7611996864087726, 0.7594994272887372]
+  [0.9387879826743615, 0.6212591060347638, 0.402425235332196]
 ```
 
 
-Take a look at the first 5 rows. The function view does not make copy of the elements of dat, but dat[1:5,:] create a new 5 by 8 matrix.
+Take a look at the first 5 rows. The function view does not make copy of the elements of dat, but dat[1:5, :] create a new 5 by 8 matrix.
 
 ```julia
 julia> dat1 = mat[1:5, 1:2]
@@ -477,6 +517,11 @@ julia> convert.(Int128, [1, 2])
  1
  2
 
+julia> Int128[1, 5]
+2-element Vector{Int128}:
+ 1
+ 5
+
 julia> prod(x)
 -3325730382484725760
 
@@ -559,12 +604,26 @@ julia> if false    # if clause requires Bool test
            🍑 = 2
        else
            💔 = 3
-       end        # after this 💔 = 3 and 🍎 and 🍑 are undefined
+       end        # after this 💔 = 3, and 🍎 and 🍑 are undefined
 3
+```
 
+
+As showed above, Julia support unicode characters. 
+Greek letters can be input like LaTeX, e.g., 
+
+```julia
 julia> α = 0.05
 0.05
+
+julia> β = 0.8
+0.8
 ```
+
+
+See this link for a list of tab completion of LaTeX style input:
+https://docs.julialang.org/en/v1/manual/unicode-input/
+
 
 
 ## Statistics
@@ -595,19 +654,19 @@ Calculate the correlation of y and x
 ```julia
 julia> y = x .+ 10randn(length(x))
 10-element Vector{Float64}:
- 120.12966992958572
- 102.32993231764466
-  92.06762284483003
-  90.84234937403635
- 103.2003105388604
- 119.56119366532893
-  93.75540461727486
- 135.2341897296843
- 109.49781918451089
-  93.4253022772583
+ 130.1954056482563
+  79.92440127195513
+  97.67026414216716
+  85.97440786328085
+ 110.30449755887523
+ 104.69100628265066
+ 110.89571040104254
+ 131.27650424105846
+  80.49006511087447
+  96.96412050852354
 
 julia> cor(y,x)
-0.6996631779801721
+0.7666798977069741
 ```
 
 
@@ -700,11 +759,12 @@ julia> dat = readdlm("USairpollution.csv", ',')
  "Wichita"           8       56.6      …  12.7      30.58        82
  "Wilmington"       36       54            9        40.25       114
 
-julia> dat = readdlm("USairpollution.csv", ',', Any, '\n', header=true)
+julia> dat = readdlm("USairpollution.csv", ',', header=true)
 (Any["Albany" 46 … 33.36 135; "Albuquerque" 11 … 7.77 58; … ; "Wichita" 8 … 30.58 82; "Wilmington" 36 … 40.25 114], AbstractString["" "SO2" … "precip" "predays"])
 
-julia> dat = readdlm("USairpollution.csv", ',', Any, '\n', skipstart=2)
-40×8 Matrix{Any}:
+julia> dat = readdlm("USairpollution.csv", ',', skipstart=1)
+41×8 Matrix{Any}:
+ "Albany"           46  47.6    44   116   8.8  33.36  135
  "Albuquerque"      11  56.8    46   244   8.9   7.77   58
  "Atlanta"          24  61.5   368   497   9.1  48.34  115
  "Baltimore"        47  55     625   905   9.6  41.31  111
@@ -714,7 +774,6 @@ julia> dat = readdlm("USairpollution.csv", ',', Any, '\n', skipstart=2)
  "Cincinnati"       23  54     462   453   7.1  39.04  132
  "Cleveland"        65  49.7  1007   751  10.9  34.99  155
  "Columbus"         26  51.5   266   540   8.6  37.01  134
- "Dallas"            9  66.2   641   844  10.9  35.94   78
  ⋮                                         ⋮           
  "Providence"       94  50     343   179  10.6  42.75  125
  "Richmond"         26  57.8   197   299   7.6  42.59  115
@@ -731,28 +790,28 @@ julia> dat = readdlm("USairpollution.csv", ',', Any, '\n', skipstart=2)
 The complete director can also be used.
 
 ```julia
-julia> dat = readdlm("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/USairpollution.csv", ',', Any, '\n')
-42×8 Matrix{Any}:
- ""                   "SO2"    "temp"  …    "wind"    "precip"     "predays"
- "Albany"           46       47.6          8.8      33.36       135
- "Albuquerque"      11       56.8          8.9       7.77        58
- "Atlanta"          24       61.5          9.1      48.34       115
- "Baltimore"        47       55            9.6      41.31       111
- "Buffalo"          11       47.1      …  12.4      36.11       166
- "Charleston"       31       55.2          6.5      40.75       148
- "Chicago"         110       50.6         10.4      34.44       122
- "Cincinnati"       23       54            7.1      39.04       132
- "Cleveland"        65       49.7         10.9      34.99       155
- ⋮                                     ⋱   ⋮                    
- "Providence"       94       50           10.6      42.75       125
- "Richmond"         26       57.8          7.6      42.59       115
- "Salt Lake City"   28       51        …   8.7      15.17        89
- "San Francisco"    12       56.7          8.7      20.66        67
- "Seattle"          29       51.1          9.4      38.79       164
- "St. Louis"        56       55.9          9.5      35.89       105
- "Washington"       29       57.3          9.3      38.89       111
- "Wichita"           8       56.6      …  12.7      30.58        82
- "Wilmington"       36       54            9        40.25       114
+julia> dat = readdlm("/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia/USairpollution.csv", ',', skipstart=1)
+41×8 Matrix{Any}:
+ "Albany"           46  47.6    44   116   8.8  33.36  135
+ "Albuquerque"      11  56.8    46   244   8.9   7.77   58
+ "Atlanta"          24  61.5   368   497   9.1  48.34  115
+ "Baltimore"        47  55     625   905   9.6  41.31  111
+ "Buffalo"          11  47.1   391   463  12.4  36.11  166
+ "Charleston"       31  55.2    35    71   6.5  40.75  148
+ "Chicago"         110  50.6  3344  3369  10.4  34.44  122
+ "Cincinnati"       23  54     462   453   7.1  39.04  132
+ "Cleveland"        65  49.7  1007   751  10.9  34.99  155
+ "Columbus"         26  51.5   266   540   8.6  37.01  134
+ ⋮                                         ⋮           
+ "Providence"       94  50     343   179  10.6  42.75  125
+ "Richmond"         26  57.8   197   299   7.6  42.59  115
+ "Salt Lake City"   28  51     137   176   8.7  15.17   89
+ "San Francisco"    12  56.7   453   716   8.7  20.66   67
+ "Seattle"          29  51.1   379   531   9.4  38.79  164
+ "St. Louis"        56  55.9   775   622   9.5  35.89  105
+ "Washington"       29  57.3   434   757   9.3  38.89  111
+ "Wichita"           8  56.6   125   277  12.7  30.58   82
+ "Wilmington"       36  54      80    80   9    40.25  114
 ```
 
 
@@ -1008,9 +1067,9 @@ Create a histogram. The first plot takes a long time.
 ```julia
 julia> using Plots
 
-julia> histogram(x[1,:])
+julia> histogram(x[1, :])
 ```
-![](figures/note02_intro_julia_54_1.png)
+![](figures/note02_intro_julia_58_1.png)
 
 
 Plot the two components of x.
@@ -1018,15 +1077,15 @@ Plot the two components of x.
 ```julia
 julia> plot(x')
 ```
-![](figures/note02_intro_julia_55_1.png)
+![](figures/note02_intro_julia_59_1.png)
 
 
 Create a scatter plot
 
 ```julia
-julia> plot(x[1,:], x[2,:], seriestype=:scatter)
+julia> plot(x[1, :], x[2, :], seriestype=:scatter)
 ```
-![](figures/note02_intro_julia_56_1.png)
+![](figures/note02_intro_julia_60_1.png)
 
 
 ## Loops
@@ -1181,11 +1240,11 @@ julia> function sum_global()
        end;
 
 julia> @time sum_global()
-  0.000091 seconds (3.49 k allocations: 70.156 KiB)
+  0.000104 seconds (3.49 k allocations: 70.156 KiB)
 485.15237163482067
 
 julia> @time sum_global()
-  0.000096 seconds (3.49 k allocations: 70.156 KiB)
+  0.000090 seconds (3.49 k allocations: 70.156 KiB)
 485.15237163482067
 ```
 
@@ -1220,7 +1279,7 @@ julia> function sum_arg(x)
        end;
 
 julia> @time sum_arg(x)
-  0.007450 seconds (4.12 k allocations: 211.604 KiB, 99.73% compilation time)
+  0.008126 seconds (4.12 k allocations: 211.604 KiB, 99.76% compilation time)
 513.3811745679393
 
 julia> @time sum_arg(x)
@@ -1241,15 +1300,12 @@ julia> time_sum(x)
 ```
 
 
-In some situations, your function may need to allocate memory as part of its operation, and this
-can complicate the simple picture above. In such cases, consider using one of the [tools](@ref tools)
-below to diagnose problems, or write a version of your function that separates allocation from
-its algorithmic aspects (see [Pre-allocating outputs](@ref)).
-
-
-
 For more serious benchmarking, consider the [BenchmarkTools.jl](https://github.com/JuliaCI/BenchmarkTools.jl)
 package which among other things evaluates the function multiple times in order to reduce noise.
+
+
+
+See https://docs.julialang.org/en/v1/manual/performance-tips/ for more performance tips. 
 
 
 
@@ -1265,11 +1321,11 @@ julia> ρ, p = 0.5, 1000
 (0.5, 1000)
 
 julia> @time S = sum([ρ^abs(i-j) for i in 1:p, j in 1:p])
-  0.194098 seconds (1.38 M allocations: 35.048 MiB, 36.98% compilation time)
+  0.208509 seconds (1.42 M allocations: 39.030 MiB, 42.59% compilation time)
 2996.0
 
 julia> @time S = sum(ρ.^abs.(1(1:p) .- (1:p)'))
-  0.086257 seconds (13 allocations: 7.630 MiB)
+  0.084393 seconds (34 allocations: 7.631 MiB)
 2996.0
 
 julia> function findS(ρ, p)
@@ -1282,7 +1338,7 @@ julia> function findS(ρ, p)
 findS (generic function with 1 method)
 
 julia> @time findS(ρ, p)
-  0.108016 seconds (26.97 k allocations: 1.503 MiB, 19.69% compilation time)
+  0.103011 seconds (26.97 k allocations: 1.503 MiB, 17.54% compilation time)
 2995.999999999545
 
 julia> using FLoops
@@ -1297,7 +1353,7 @@ julia> function findS_F(ρ, p)
 findS_F (generic function with 1 method)
 
 julia> @time findS_F(ρ, p)
-  0.151047 seconds (407.52 k allocations: 22.575 MiB, 90.73% compilation time)
+  0.160099 seconds (407.71 k allocations: 22.581 MiB, 91.26% compilation time)
 2995.9999999999445
 ```
 
@@ -1364,7 +1420,7 @@ julia> y = X * b .+ randn(n)
 Calculate the least square estimate using
 
 ```julia
-julia> inv(X' * X) * (X' * y)
+julia> b̂ = inv(X' * X) * (X' * y)
 2-element Vector{Float64}:
  2.0151334720396745
  2.8995713414229223
@@ -1389,7 +1445,7 @@ julia> b̂ = X \ y
 Do NOT use 
 
 ```julia
-julia> inv(X' * X) * X' * y
+julia> b̂ = inv(X' * X) * X' * y
 2-element Vector{Float64}:
  2.0151334720396745
  2.8995713414229223
