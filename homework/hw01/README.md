@@ -13,7 +13,7 @@ Submission link: <https://classroom.github.com/a/P95_VWv->
    - GitHub user name:
    - GitHub email address:
 
-## Step 2 (Due on Wednesday 02/02 at 8:00 PM ET)
+## Step 2 (Due on Friday 02/04 at 8:00 PM ET)
 
 - Give another two students (to be specified in the FeedbackList.md) access to your submission repository so that they can push their feedback to it.
 
