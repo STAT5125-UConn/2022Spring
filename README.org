@@ -1,8 +1,8 @@
 #+startup: show3levels hideblocks
 
 * STAT 5125: Computing for Statistical Data Science
- some change from fork 1
- 
+combined 1 and 2
+
 ** Course Information
 
 - Time and Location
