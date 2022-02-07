@@ -56,7 +56,9 @@ y = log.(x)
 mat = hcat(x, y)
 mat = [x y]
 #' Combine by rows
+[x y]
 [x; y]
+a = [x, y]
 #' The following will create an array of arrays with length 2
 tmp = [x, y, "a", 'a']
 
@@ -74,8 +76,10 @@ size(mat2, 1)
 mat[3,2]
 #' The first three rows of mat
 mat[1:3, :]
+mat[1:3, ]
 #' The second column of mat
 mat[:, 2]
+mat[:, [2]]
 #' Exclude the second row
 mat[setdiff(1:end, 2), :]
 #' Exclude the second column
@@ -84,10 +88,10 @@ mat[:,setdiff(1:end, 2)]
 setdiff(1:8, [3, 5])
 
 # 't' will be removed
-setdiff([1, 3, "true", 't', rand(3)], "true")
+setdiff([1, 3, "true", 't'], "true")
 
 # "true" will be removed
-setdiff([1, 3, "true", 't', rand(3)], ["true"])
+setdiff([1, 3, "true", 't'], ["true"])
 
 #' Take a look at the first 5 rows. The function view does not make copy of the elements of dat, but dat[1:5, :] create a new 5 by 8 matrix.
 dat1 = mat[1:5, 1:2]
@@ -100,6 +104,12 @@ dat2[1,1] = 0
 x .+ y
 z = x .- y
 x .* y
+x * y
+
+a = ones(2, 3)
+b = collect(1:3)
+a' .* b
+
 2x
 x.^2
 2 .^x
@@ -114,6 +124,7 @@ convert.(Int128, [1, 2])
 Int128[1, 5]
 prod(x)
 prod(Int128.(x))
+prod(Int128.(10^1000))
 prod(convert.(Int128, x))
 BigInt.(x)
 BigInt(10)^1000
@@ -124,9 +135,10 @@ prod(convert.(Int128, x[3:end]))
 #' logic operation
 sum(x) > 10
 #' number of "F" in the vector w
+w .== "F"
 sum(w.=="F")
 #' returns 1 if true and 0 if false
-x[1]>10 ? 1 : 0
+x[1]>1000 ? 1 : 0
 #' another example
 a = 2
 a>10 ? println("hello") : println("Hi")
@@ -144,6 +156,7 @@ end        # after this 💔 = 3, and 🍎 and 🍑 are undefined
 #' Greek letters can be input like LaTeX, e.g., 
 α = 0.05
 β = 0.8
+α̂ = 0.3
 #' See this link for a list of tab completion of LaTeX style input:
 #' https://docs.julialang.org/en/v1/manual/unicode-input/
 
@@ -170,8 +183,8 @@ using DelimitedFiles
 #' `path = "/home/ossifragus/Dropbox/teaching/5125/notes/note02_Julia"`; 
 #' for Windows, use this format 
 #' `path = "c:\\Users\\ossifragus\\Dropbox\\teaching\\5125\\notes\\note02_Julia"`. 
-dat = readdlm("USairpollution.csv", ',', Any, '\n')
 dat = readdlm("USairpollution.csv", ',')
+dat = readdlm("USairpollution.csv", ',', Any, '\n')
 dat = readdlm("USairpollution.csv", ',', header=true)
 dat = readdlm("USairpollution.csv", ',', skipstart=1)
 #' The complete director can also be used.
@@ -198,6 +211,7 @@ CSV.write("data1.csv", dat1)
 using Random, Distributions, Statistics # load packages
 Random.seed!(8) # set seed of random
 #' Generate a 10 by 1 vector of random numbers from U(0, 1)
+rand()
 rand(10)
 #' Generate a 3 by 4 matrix of random numbers from U(0, 1)
 rand(3, 4)
@@ -212,7 +226,8 @@ sort(a)
 sort!(a)
 
 #' Use the Distributions package, we can define various distributions and generate randoms from them. For example, generate 100 data points from $N(\mu=0, \sigma^2=2^2)$.
-x = rand(Normal(0, 2), 100)
+d = Normal(0, 2)
+x = rand(d, 100)
 #' Check the mean and standard deviation
 (mean(x), std(x))
 
@@ -235,6 +250,7 @@ histogram(x[1, :])
 plot(x')
 #' Create a scatter plot
 plot(x[1, :], x[2, :], seriestype=:scatter)
+scatter(x[1, :], x[2, :])
 
 #' ## Loops
 x = 1:10
@@ -263,6 +279,9 @@ end              # x is defined in the inner scope of the loop
 #' Create arrays using for loop
 [x^2 for x in 1:5]
 [i+j for i in 1:3, j in 2:6]
+
+# to continue
+
 ρ, p = 0.6, 7
 [ρ^abs(i-j) for i in 1:p, j in 1:p]
 #' Of course, there are other ways to create arrays
