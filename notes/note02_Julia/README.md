@@ -1,6 +1,7 @@
 # Some Links
 
 - [Julia Micro-Benchmarks](https://julialang.org/benchmarks/)
+- [Another recent benchmark](https://twitter.com/erikengheim/status/1484594543211081728)
 - Download Julia [here](https://julialang.org/downloads/).
 - Julia installation instruction [here](https://julialang.org/downloads/platform/).
 - Download VSCode [here](https://code.visualstudio.com/download).
