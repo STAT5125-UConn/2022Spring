@@ -37,6 +37,6 @@ Pkg.add("Weave")
 
 ```julia
 using Weave
-weave("example_note01.jmd", doctype="github")
+weave("example.jl", doctype="github")
 
 ```
