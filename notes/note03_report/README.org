@@ -1,0 +1,17 @@
+* Reporting generating
+
+The following packages will be discussed:
+
+- [IJulia.jl](IJulia/)
+- [Pluto.jl](Pluto/)
+- [runcode](LaTeX_runcode/)
+- [Weave.jl](Weave/)
+
+
+Other popular packages:
+
+- https://github.com/fredrikekre/Literate.jl
+- https://github.com/JuliaDocs/Documenter.jl
+- https://github.com/tlienart/LiveServer.jl
+- https://github.com/tlienart/Franklin.jl
+- https://github.com/MichaelHatherly/Publish.jl
