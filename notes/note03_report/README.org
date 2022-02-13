@@ -2,10 +2,10 @@
 
 The following packages will be discussed:
 
-- [IJulia.jl](IJulia/)
-- [Pluto.jl](Pluto/)
-- [runcode](LaTeX_runcode/)
-- [Weave.jl](Weave/)
+- [[IJulia/][IJulia.jl]]
+- [[Pluto/][Pluto.jl]]
+- [[LaTeX_runcode/][runcode]]
+- [[Weave/][Weave.jl]] 
 
 
 Other popular packages:
