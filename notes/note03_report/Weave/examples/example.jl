@@ -12,9 +12,9 @@
 #' ```julia
 #' using Weave
 #' #HTML
-#' weave("example_note01.jl", out_path="output/")
+#' weave("example.jl", out_path="output/")
 #' #pdf
-#' weave("example_note01.jl", out_path="output/", doctype="md2pdf")
+#' weave("example.jl", out_path="output/", doctype="md2pdf")
 #' ```
 
 #' Chunk Options can be specified using a line starting with "`#+`".
@@ -80,8 +80,8 @@ ENV["GKSwstype"]="nul"
 using ElectronDisplay; ElectronDisplay.CONFIG.focus = false
 # get_chunk_defaults()
 set_chunk_defaults!(:term => true)
-weave("example_note01.jl", doctype="github")
-weave("example_note01.jl", doctype="github", out_path="output/")
-weave("example_note01.jl", out_path="output/")
-weave("example_note01.jl", out_path="output/", doctype="md2pdf")
+weave("example.jl", doctype="github")
+weave("example.jl", doctype="github", out_path="output/")
+weave("example.jl", out_path="output/")
+weave("example.jl", out_path="output/", doctype="md2pdf")
 # ENV["GKSwstype"]="gksqt"

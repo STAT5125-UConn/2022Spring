@@ -30,11 +30,11 @@ The value of a is `j a`.
 ```julia; eval=false
 using Weave
 #Markdown
-weave("example_note01_jmd.jmd", out_path="output/", doctype="github")
+weave("example_jmd.jmd", out_path="output/", doctype="github")
 #HTML
-weave("example_note01_jmd.jmd", out_path="output/", doctype="md2html")
+weave("example_jmd.jmd", out_path="output/", doctype="md2html")
 #pdf
-weave("example_note01_jmd.jmd", out_path="output/", doctype="md2pdf")
+weave("example_jmd.jmd", out_path="output/", doctype="md2pdf")
 ```
 # Chunk Options
 
@@ -266,10 +266,10 @@ the weave command as follows:
 ```julia; eval=false; echo=false
 using Weave
 #Markdown
-weave("example_note01_jmd.jmd", out_path="output/", doctype="github")
+weave("example_jmd.jmd", out_path="output/", doctype="github")
 #HTML
-weave("example_note01_jmd.jmd", out_path="output/")
+weave("example_jmd.jmd", out_path="output/")
 #pdf
-weave("example_note01_jmd.jmd", out_path="output/", doctype="md2pdf")
+weave("example_jmd.jmd", out_path="output/", doctype="md2pdf")
 ```
 
