@@ -286,6 +286,8 @@ end              # x is defined in the inner scope of the loop
 [ρ^abs(i-j) for i in 1:p, j in 1:p]
 #' Of course, there are other ways to create arrays
 ρ.^abs.((1:p) .- (1:p)')
+
+ρ .^ [i-j for i in 1:p, j in 1:p]
 (1:p) .- (1:p)'
 
 #' ## Self-defined functions
@@ -302,7 +304,7 @@ fsum(x)
 f(x, y = 10) = x .+ y # one line definition of a new function
 
 function f(x, y=10) # the same as above
-    x + y
+    x .+ y
 end
 
 #' ## Measure performance with `@time` and pay attention to memory allocation
@@ -347,6 +349,7 @@ end;
 
 @time sum_arg(x)
 
+@time sum_global()
 @time sum_arg(x)
 
 #' The 1 allocation seen is from running the `@time` macro itself in global scope. If we instead run
@@ -365,9 +368,15 @@ time_sum(x)
 
 #' $S=\sum_{i=1}^p\sum_{j=1}^p\rho^{|i-j|},$
 #' for $\rho=0.5$, $p=1000$.
-ρ, p = 0.5, 1000
+ρ, p = 0.5, 10000
 @time S = sum([ρ^abs(i-j) for i in 1:p, j in 1:p])
 @time S = sum(ρ.^abs.(1(1:p) .- (1:p)'))
+
+s = Matrix{Float64}(undef, p, p)
+for i in 1:p, j in 1:p
+    s[i,j] = ρ^abs(i-j)
+end
+
 
 function findS(ρ, p)
     S = 0 
@@ -386,6 +395,7 @@ function findS_F(ρ, p)
     end
     return S
 end
+
 @time findS_F(ρ, p)
 
 # Threads.nthreads()
@@ -405,7 +415,7 @@ using RCall
 
 #' Generate data from a linear model
 using Random
-Random.seed!(2021);
+Random.seed!(2022);
 n = 10
 X = randn(n, 2)
 b = [2.0, 3.0]
