@@ -39,6 +39,14 @@ mean(rollA .> rollB)
 mean(rollB .> rollC)
 mean(rollC .> rollA)
 
+ab = 0
+for i in 1:n
+    if rand(A) > rand(B)
+        ab += 1
+    end
+end
+ab / n
+
 # Banach Match Problem
 function BMP(n)
     l = r = n
@@ -48,6 +56,14 @@ function BMP(n)
             return max(l, r)
         end
     end
+end
+
+function BMP(n)
+    l = r = n
+    while l * r != 0
+        (rand() < 0.5) ? (l -= 1) : (r -=1)
+    end
+    return max(l, r)
 end
 
 n = 100
@@ -65,9 +81,9 @@ Random.seed!(2022);
 n = 10000
 kids = ["👦", "👧"]
 res = rand(kids, 2, n)
-n_twog = sum((res[1,:] .== "👧") .& (res[2,:] .== "👧"))
+n_twog = sum((res[1,:] .== "👧") .&& (res[2,:] .== "👧"))
 n_oldg = sum(res[1,:] .== "👧")
-n_oneg = sum((res[1,:] .== "👧") .| (res[2,:] .== "👧"))
+n_oneg = sum((res[1,:] .== "👧") .|| (res[2,:] .== "👧"))
 n_twog / n_oldg
 n_twog / n_oneg
 

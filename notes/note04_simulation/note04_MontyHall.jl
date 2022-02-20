@@ -96,7 +96,6 @@ begin
 	doors_open2[loc_goat,(onegame.host-1)*p.+(1+mg:p-mg)] = goat
 	doors_open2[loc_car,(onegame.prize-1)*p.+(1+mc:p-mc)] = car
 	showcar == "show" ? doors_open2 : nothing
-	doors_open2
 end
 
 # ╔═╡ 67562e44-2f38-48c5-b5c2-de351e4334c8

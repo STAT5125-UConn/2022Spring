@@ -225,7 +225,7 @@ end;
 begin
     x_cauchy = [rand(Cauchy(), i) for i in n_seq];
     plot(n_seq, mean.(x_cauchy), title="Cauchy", xlab="n", ylab="mean")
-end
+end;
 
 # ╔═╡ f9d6c0b8-8b34-4308-8b48-d6ff10d8959d
 md"""
@@ -1314,8 +1314,8 @@ version = "0.9.1+5"
 # ╟─e41aac51-1a96-4e41-9619-b30579d0a30c
 # ╟─20bfb207-2fd5-4492-86a2-5ad2a65778d8
 # ╠═ef18536e-4298-4d6e-bcc6-f6742d0b526d
-# ╟─18be5629-df94-42f2-937d-65386ffdf7e2
-# ╟─a08ceba8-64c8-4b6c-a6cb-39e60aa4f42f
+# ╠═18be5629-df94-42f2-937d-65386ffdf7e2
+# ╠═a08ceba8-64c8-4b6c-a6cb-39e60aa4f42f
 # ╟─f9d6c0b8-8b34-4308-8b48-d6ff10d8959d
 # ╟─582fd476-7b51-42a0-8c49-635a939ed8bf
 # ╟─7baa8eb5-d9c6-43e8-9194-5f43ebb833cc
