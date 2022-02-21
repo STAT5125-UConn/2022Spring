@@ -26,7 +26,7 @@ you want to choose?
 
 - Between A and B?
 - Between B and C?
-- Between A and A?
+- Between C and A?
 
 ** Banach Match Problem
 A pipe smoker carries one box of matches in his left pocket and one box in his

@@ -3,11 +3,13 @@ using StatsBase, Distributions
 
 ## Elevator waiting time
 Random.seed!(2022);
-n = 100000
+n = 1_000_000
 elevator = 1 .+ 14rand(n)
-# elevator = rand(Uniform(1, 15), n)
+elevator = rand(Uniform(1, 15), n)
 up = elevator .< 13
 sum(up) / n
+
+12 / (12 +2)
 
 n_up = 0
 for i in 1:n
@@ -29,12 +31,13 @@ sum(ab) / 36
 bc = B .> C'
 mean(ab)
 ca = C .> A'
-mean(ab)
+mean(ca)
 
-n = 1000000
+n = 100000
 rollA = rand(A, n)
 rollB = rand(B, n)
 rollC = rand(C, n)
+sum(rollA .> rollB) / n
 mean(rollA .> rollB)
 mean(rollB .> rollC)
 mean(rollC .> rollA)
@@ -47,12 +50,30 @@ for i in 1:n
 end
 ab / n
 
+function v1(n; A=A, B=B)
+    rollA = rand(A, n)
+    rollB = rand(B, n)
+    sum(rollA .> rollB) / n
+end
+@time v1(1_000_000)
+
+function v2(n; A=A, B=B)
+    ab = 0
+    for i in 1:n
+        if rand(A) > rand(B)
+            ab += 1
+        end
+    end
+    ab / n
+end
+@time v2(1_000_000)
+
 # Banach Match Problem
 function BMP(n)
     l = r = n
-    for i in 1:2n
+    for i in 1:(2n + 1)
         (rand() < 0.5) ? (l -= 1) : (r -=1)
-        if l * r == 0
+        if l == -1 || r == -1
             return max(l, r)
         end
     end
@@ -60,7 +81,7 @@ end
 
 function BMP(n)
     l = r = n
-    while l * r != 0
+    while l > -1 && r > -1
         (rand() < 0.5) ? (l -= 1) : (r -=1)
     end
     return max(l, r)
@@ -76,6 +97,7 @@ counts(simu) ./ length(simu)
 bar(counts(simu) ./ length(simu))
 mean(simu)
 
+# to continue
 ## Two Child Problem
 Random.seed!(2022);
 n = 10000
@@ -89,7 +111,7 @@ n_twog / n_oneg
 
 ## Fair Division
 Random.seed!(2022);
-n = 10000
+n = 10
 players = ["🐱", "🐭"]
 res = rand(players, 5, n)
 🐱❓ = res .== "🐱"
@@ -114,7 +136,7 @@ sum(🐭1 .& 🐭win) / sum(🐭1)
 ## Bertrand’s Box
 Random.seed!(2022);
 boxes = [["🪙", "🪙"], ["🪙", "🥈"], ["🥈", "🥈"]]
-n = 10
+n = 10000
 boxcoin = Array{Any}(undef, n, 2);
 
 for i in 1:n
@@ -127,6 +149,18 @@ gold❓ = boxcoin[:,2] .== "🪙"
 sum(boxcoin[:,1] .== [["🪙", "🪙"]]) / sum(gold❓)
 
 mean(boxcoin[:,1][gold❓] .== [["🪙", "🪙"]])
+
+gold = twogolds = 0
+for i in 1:n
+    box = rand(boxes)
+    if rand(box) == "🪙"
+        gold += 1
+        if box == ["🪙", "🪙"]
+            twogolds += 1
+        end
+    end
+end
+twogolds / gold
 
 ## Birthday Problem
 n = 10
@@ -148,13 +182,12 @@ end
 
 bd(23, 365, 10000)
 
+bd(500, 2_400_000, 10000)
+
 rpt = 10000
 samebd = 0
 for i in 1:rpt
-    bd = rand(1:365, 23)
-    if length(unique(bd)) < 23
-        samebd += 1
-    end
+    samebd += length(unique(rand(1:365, 23))) < 23
 end
 samebd / rpt
 
@@ -167,14 +200,14 @@ function birthday(n=23, yours="05-01")
     N = 365 # number of days each year
     room = rand(1:N, n) # randomly choose n people
     doy = dayofyear(Date(yours, "mm-day"))
-    # convert the convert your birthday to day of year
+    # convert the birthday to day of year
     share = length(unique(room)) < n
     ## if there are people sharing a common birthday
     same = doy ∈ room # if someone's birthday the same as yours
     return [share, same]
 end
 
-@time res = [birthday(23) for i in 1:10000];
+res = [birthday(23) for i in 1:10000];
 mean(res)
 res = [birthday(253) for i in 1:10000];
 mean(res)
@@ -199,7 +232,7 @@ P2 = 1 .- (364/365).^n
 
 ## Henry’s Choice
 Random.seed!(2022);
-n = 10 # number of simulations
+n = 1000 # number of simulations
 
 ### spin and shot
 spin_shot = rand(1:6, 2, n)
@@ -254,7 +287,7 @@ end
 n = 100000
 n_ns = n_sw = 0
 for i in 1:n
-    tmp = whichDoor(1) 
+    tmp = whichDoor(1, nds=3) 
     if tmp[1] == 1
         n_ns += 1
     end
