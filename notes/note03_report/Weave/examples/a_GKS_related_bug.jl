@@ -15,4 +15,3 @@ ENV["GKSwstype"]="nul"
 weave("a_GKS_related_bug.jl", out_path="output/")
 # weave("00.jl", out_path="output/", doctype="github")
 using ElectronDisplay; ElectronDisplay.CONFIG.focus = false
-ENV["GKSwstype"]="gksqt"

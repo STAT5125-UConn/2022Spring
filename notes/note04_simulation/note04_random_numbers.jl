@@ -33,9 +33,6 @@ The `rand` function in Julia is quite versatile: it tries to generate, or **samp
 # ╔═╡ f49191a2-86b1-11eb-3eab-b392ba058415
 rand(1:6)
 
-# ╔═╡ 1abda6c4-86b2-11eb-2aa3-4d1148bb52b7
-rand([2, 3, 5, 7, 11], 2, 3)
-
 # ╔═╡ 30b12f28-86b2-11eb-087b-8d50ec429b89
 rand("STAT5125")
 
@@ -54,7 +51,7 @@ md"""
 """
 
 # ╔═╡ 0de6f23e-86b2-11eb-39ff-318bbc4ecbcf
-rand(1:6, 10)
+rand(1:6, 6)
 
 # ╔═╡ 36c3da4a-86b3-11eb-0b2f-fffdde06fcd2
 md"""
@@ -65,7 +62,7 @@ In fact, you can generate not only random vectors, but also random matrices:
 rand(3, 5)
 
 # ╔═╡ 940c2bf6-86b2-11eb-0a5e-011abdd6352b
-rand(1:6, 10, 12)
+rand(1:6, 3, 4)
 
 # ╔═╡ a17ce20b-f73e-40b3-b1f1-2d90c99c2dcd
 md"""
@@ -85,7 +82,7 @@ Let's *count* heads and tails using the `countmap` function from the `StatsBase.
 """
 
 # ╔═╡ 8fe715e4-8727-11eb-2e7f-15b723bb8d9d
-tosses = rand( ["head", "tail"], 10)
+tosses = rand( ["head", "tail"], 600)
 
 # ╔═╡ 9da4e6f4-8727-11eb-08cb-d55e3bbff0e4
 toss_counts = countmap(tosses)
@@ -124,7 +121,7 @@ How could we model a coin that is **weighted**, so that it is more likely to com
 """
 
 # ╔═╡ 049eda28-0e44-4882-acb6-5db8d9814648
-countmap(wsample(["head", "tail"], [0.7, 0.3], 1000))
+countmap(wsample(["head", "tail"], [7, 3], 1000))
 
 # ╔═╡ 5ea5838a-8729-11eb-1749-030533fb0656
 md"""
@@ -149,9 +146,6 @@ p = $(@bind p Slider(0.0:0.01:1.0, show_value=true, default=0.7))
 # ╔═╡ baed5908-8729-11eb-00e0-9f749406c30c
 countmap( [bernoulli(p) for i in 1:1000] )
 
-# ╔═╡ d6c1093b-aa60-443e-a553-3464bd951c55
-randn()
-
 # ╔═╡ ae8a29f0-7612-4560-80c1-5fcd1d55e838
 md"""
 ## Sampling from complicated distributions with the `Distributions` package
@@ -168,7 +162,13 @@ Note that for Exponential(1), random numbers can also be generated with `randexp
 rand(Normal(1, 2), 2, 3)
 
 # ╔═╡ b4603a87-0e5c-4070-8cc1-eedf4bd3a282
-1 .+ 2randn(10)
+Random.seed!(1); 1 .+ 2randn(10)
+
+# ╔═╡ e0d18a35-89e2-4672-a7b4-51e4966de038
+rand(Normal(1, 2), 10)
+
+# ╔═╡ dcd20f97-9014-4f65-a153-96ec950e6539
+
 
 # ╔═╡ 9763ede9-19d0-41fe-acff-d9b6518d341f
 rand(Binomial(10, 0.8), 20)
@@ -211,21 +211,21 @@ begin
     # n1 = 50
     n_seq = (n < 100) ? (1:n) : (1:n÷100:n)
     collect(n_seq)
-    coins = [rand(i) .< 0.5 for i in n_seq];
+    coins = [rand(i) .< 0.7 for i in n_seq];
     plot(n_seq, mean.(coins), title="Bernoulli", xlab="n", ylab="mean", ylim=(0,1))
-end
+end;
 
 # ╔═╡ 18be5629-df94-42f2-937d-65386ffdf7e2
 begin
     x_normal = [randn(i) for i in n_seq];
     plot(n_seq, mean.(x_normal), title="Normal", xlab="n", ylab="mean", ylim=(-1,1))
-end;
+		end;
 
 # ╔═╡ a08ceba8-64c8-4b6c-a6cb-39e60aa4f42f
 begin
     x_cauchy = [rand(Cauchy(), i) for i in n_seq];
     plot(n_seq, mean.(x_cauchy), title="Cauchy", xlab="n", ylab="mean")
-end;
+		end;
 
 # ╔═╡ f9d6c0b8-8b34-4308-8b48-d6ff10d8959d
 md"""
@@ -1271,7 +1271,6 @@ version = "0.9.1+5"
 # ╟─db2d25de-86b1-11eb-0c78-d1ee52e019ca
 # ╟─e33fe4c8-86b1-11eb-1031-cf45717a3dc9
 # ╠═f49191a2-86b1-11eb-3eab-b392ba058415
-# ╠═1abda6c4-86b2-11eb-2aa3-4d1148bb52b7
 # ╠═30b12f28-86b2-11eb-087b-8d50ec429b89
 # ╠═6cdea3ae-86b2-11eb-107a-17bea3f54bc9
 # ╠═1c769d58-8744-11eb-3bd3-ab11ea1503ed
@@ -1300,11 +1299,12 @@ version = "0.9.1+5"
 # ╠═081e3796-8747-11eb-32ec-dfd998605737
 # ╟─008a40d2-872a-11eb-224d-5b3331f29c99
 # ╠═baed5908-8729-11eb-00e0-9f749406c30c
-# ╠═d6c1093b-aa60-443e-a553-3464bd951c55
 # ╟─ae8a29f0-7612-4560-80c1-5fcd1d55e838
 # ╟─e2ce5318-92df-469c-879a-f96b037a8fe6
 # ╠═924576cb-661f-4d25-93a6-e45c023e1e00
 # ╠═b4603a87-0e5c-4070-8cc1-eedf4bd3a282
+# ╠═e0d18a35-89e2-4672-a7b4-51e4966de038
+# ╠═dcd20f97-9014-4f65-a153-96ec950e6539
 # ╠═9763ede9-19d0-41fe-acff-d9b6518d341f
 # ╠═bfe6d271-aaf7-4d30-8878-f20d88ba3cca
 # ╠═69f58e3d-962e-4a65-8fdd-8e8005f7ce93
@@ -1318,13 +1318,13 @@ version = "0.9.1+5"
 # ╠═a08ceba8-64c8-4b6c-a6cb-39e60aa4f42f
 # ╟─f9d6c0b8-8b34-4308-8b48-d6ff10d8959d
 # ╟─582fd476-7b51-42a0-8c49-635a939ed8bf
-# ╟─7baa8eb5-d9c6-43e8-9194-5f43ebb833cc
+# ╠═7baa8eb5-d9c6-43e8-9194-5f43ebb833cc
 # ╟─da196c93-e5ee-4ea0-95ce-5506b0611ecc
-# ╟─cced98ef-8365-4700-8aff-8611adbe0511
+# ╠═cced98ef-8365-4700-8aff-8611adbe0511
 # ╟─8421eb4f-babd-49ff-b975-d6a22bc5daa9
 # ╠═64849e25-12e2-415a-baac-867239886bbc
 # ╟─be6e4c00-873c-11eb-1413-5326aba54216
-# ╠═9a1136c2-873c-11eb-124f-c3939972ce4a
+# ╟─9a1136c2-873c-11eb-124f-c3939972ce4a
 # ╠═b5251f76-873c-11eb-38cb-7db300c8fe3c
 # ╠═da62fd1c-873c-11eb-0758-e7cb48e964f1
 # ╟─00000000-0000-0000-0000-000000000001
