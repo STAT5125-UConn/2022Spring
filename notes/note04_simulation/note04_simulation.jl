@@ -213,14 +213,15 @@ res = [birthday(253) for i in 1:10000];
 mean(res)
 
 ## ## Birth problem direct calculation
-function P(n)
+function p_share(n)
     p = 1
     for i in 1:n
         p *= (365 - i + 1) / 365
     end
     return 1-p
 end
-P.([4, 16, 23, 32, 40, 56])
+p_share.([4, 16, 23, 32, 40, 56])
+
 1 - prod(BigInt.((365-22):365)) / BigInt(365)^23
 
 n = [4, 16, 23, 32, 40, 56, 252, 253, 254]
@@ -269,14 +270,13 @@ first_blank = first.(shot_again) .> 2
 mean(last.(shot_again[first_blank]) .<= 2)
 
 ## Monty Hall problem
-# using Base.Iterators
-# host = rand(rest(1:nds, choice)) # rest is in Base.Iterators
+using Base.Iterators
 Random.seed!(2022);
 
-function whichDoor(choice; nds=10)
+function whichDoor(choice; nds=3)
     prize = rand(1:nds)
     if prize == choice
-        host = rand(setdiff(1:nds, choice)) # rest is in Base.Iterators
+        host = rand(setdiff(1:nds, choice))
     else
         host = rand(setdiff(1:nds, [choice, prize]))
     end
@@ -285,22 +285,22 @@ function whichDoor(choice; nds=10)
 end
 
 n = 100000
-n_ns = n_sw = 0
+n_win_original = n_win_switch = 0
 for i in 1:n
     tmp = whichDoor(1, nds=3) 
     if tmp[1] == 1
-        n_ns += 1
+        n_win_original += 1
     end
     if tmp[1] == tmp[2]
-        n_sw += 1
+        n_win_switch += 1
     end
 end
-(n_ns / n, n_sw / n)
+(n_win_original / n, n_win_switch / n)
 
 function whichDoor(choice; nds=3)
     prize = rand(1:nds)
     if prize == choice
-        host = rand(setdiff(1:nds, choice)) # rest is in Base.Iterators
+        host = rand(setdiff(1:nds, choice))
     else
         host = rand(setdiff(1:nds, [choice, prize]))
     end
@@ -316,12 +316,12 @@ whichDoor(1)
 doors = fill("🚪", nds) # ["🚪", "🚪", "🚪"]
 choice = 1
 doors[choice] *= "👈"
-doors[choice] =  doors[choice] * "👈"
-"hello" * "Hi"
+# doors[choice] =  doors[choice] * "👈"
+# "hello" * "Hi"
 doors
 onegame = whichDoor(choice)
-doors[onegame["host"]] *= "🐐"
 onegame["host"]
+doors[onegame["host"]] *= "🐐"
 doors
 doors[onegame["prize"]] *= "🚗"
 
@@ -355,7 +355,8 @@ function open_random(prisoners, n=length(prisoners))
         opens = sample(drawers, n÷2, replace=false)
         # rand(drawers, n÷2)
         # randomly open n/2 drawers
-        if !(i in opens)
+        if i ∉ opens
+        # if !(i in opens)
             # if any prisoner does not find his number, all prisoners die
             pardon = false
             break
@@ -379,7 +380,8 @@ function open_smart(prisoners, n=length(prisoners))
                opens[j] = drawers[opens[j-1]]
             end
         end
-        if !(i in opens)
+        if i ∉ opens
+        # if !(i in opens)
             pardon = false
             break
         end
