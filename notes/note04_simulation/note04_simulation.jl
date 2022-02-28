@@ -97,7 +97,6 @@ counts(simu) ./ length(simu)
 bar(counts(simu) ./ length(simu))
 mean(simu)
 
-# to continue
 ## Two Child Problem
 Random.seed!(2022);
 n = 10000
@@ -111,7 +110,7 @@ n_twog / n_oneg
 
 ## Fair Division
 Random.seed!(2022);
-n = 10
+n = 100000
 players = ["🐱", "🐭"]
 res = rand(players, 5, n)
 🐱❓ = res .== "🐱"
@@ -136,17 +135,18 @@ sum(🐭1 .& 🐭win) / sum(🐭1)
 ## Bertrand’s Box
 Random.seed!(2022);
 boxes = [["🪙", "🪙"], ["🪙", "🥈"], ["🥈", "🥈"]]
-n = 10000
-boxcoin = Array{Any}(undef, n, 2);
+n = 100000
+boxcoin = Array{Any}(undef, n, 2)
 
 for i in 1:n
     boxcoin[i,1] = box = rand(boxes)
-        # box = boxes[rand(1:3)]
     boxcoin[i,2] = rand(box)
 end
 
 gold❓ = boxcoin[:,2] .== "🪙"
-sum(boxcoin[:,1] .== [["🪙", "🪙"]]) / sum(gold❓)
+sum(gold❓ .&& (boxcoin[:,1] .== [["🪙", "🪙"]])) / sum(gold❓)
+
+boxcoin[:,1] .== [["🪙", "🪙"]]
 
 mean(boxcoin[:,1][gold❓] .== [["🪙", "🪙"]])
 
@@ -171,11 +171,6 @@ function bd(n_people=23, N=365, n=10)
     for i in 1:n
         tmp = rand(1:N, n_people)
         same[i] = length(unique(tmp)) < n_people
-        # if length(unique(tmp)) < 23
-        #     same[i] = 1
-        # else
-        #     same[i] = 0
-        # end
     end
     return mean(same)
 end
@@ -207,6 +202,8 @@ function birthday(n=23, yours="05-01")
     return [share, same]
 end
 
+doy = dayofyear(Date("04-01", "mm-day"))
+
 res = [birthday(23) for i in 1:10000];
 mean(res)
 res = [birthday(253) for i in 1:10000];
@@ -233,7 +230,7 @@ P2 = 1 .- (364/365).^n
 
 ## Henry’s Choice
 Random.seed!(2022);
-n = 1000 # number of simulations
+n = 10000 # number of simulations
 
 ### spin and shot
 spin_shot = rand(1:6, 2, n)
@@ -261,14 +258,18 @@ function twoshots()
 end
 twoshots()
 
-shot_again = [twoshots() for i in 1:n];
+shot_again = [twoshots() for i in 1:n]
 first_blank = first.(shot_again) .> 2
+# first.(shot_again)
 mean(last.(shot_again[first_blank]) .<= 2)
 
 shot_again = [rand(1:6) .|> [x->x, x->x%6+1] for i in 1:n];
+tmp = [x->x, x->x%6+1]
+
 first_blank = first.(shot_again) .> 2
 mean(last.(shot_again[first_blank]) .<= 2)
 
+# to continue
 ## Monty Hall problem
 using Base.Iterators
 Random.seed!(2022);
