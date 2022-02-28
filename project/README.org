@@ -3,7 +3,8 @@
 
 * STAT 5125 Project
 
-Topic Sign Up Link*: https://classroom.github.com/a/MWhxJSvT
+*Topic Sign Up Link*: https://classroom.github.com/a/MWhxJSvT
+
 *Submission Link*: TBA
 	
 This project consists of two parts: an oral presentation and a written
