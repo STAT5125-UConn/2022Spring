@@ -1,6 +1,6 @@
 # Homework 3
 
-## Step 1 (Due on TBA at 8:00 PM ET)
+## Step 1 (Due on March 7 at 8:00 PM ET)
 
 Submission link: https://classroom.github.com/a/pmjPmG_e
 
@@ -35,7 +35,7 @@ Be sure to set the random seed in your codes so that your results are reproducib
 
 3. Find the probability that exactly one person wins two cars for the Canadian lottery example in [note04](../../notes/note04_simulation/note04.org). Specifically, assume that there are 2.4 million subscriber numbers and 500 numbers are randomly selected with replacement.
 
-## Step 2 (Due on TBA at 8:00 PM ET)
+## Step 2 (Due on March 11 at 8:00 PM ET)
 
 - Give another two students (to be specified in the FeedbackList.md) access to your submission repository so that they can push their feedback to it.
 
