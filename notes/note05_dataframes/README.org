@@ -1,0 +1,6 @@
+# An Introduction to DataFrames
+
+- The notes are based on [[https://github.com/bkamins/Julia-DataFrames-Tutorial][Julia-DataFrames-Tutorial]].
+
+- A DataFrame.jl [[https://ahsmart.com/assets/pages/data-wrangling-with-data-frames-jl-cheat-sheet/DataFramesCheatSheet_v1.x_rev1.pdf][cheat sheet]].
+
