@@ -269,10 +269,21 @@ tmp = [x->x, x->x%6+1]
 first_blank = first.(shot_again) .> 2
 mean(last.(shot_again[first_blank]) .<= 2)
 
-# to continue
 ## Monty Hall problem
-using Base.Iterators
+# using Base.Iterators
 Random.seed!(2022);
+
+choice = 1
+nds = 3
+prize = rand(1:nds)
+if prize == choice
+    host = rand(setdiff(1:nds, choice))
+else
+    host = rand(setdiff(1:nds, [choice, prize]))
+end
+switch = rand(setdiff(1:nds, [choice, host]))
+return [prize, switch]
+
 
 function whichDoor(choice; nds=3)
     prize = rand(1:nds)
@@ -328,7 +339,7 @@ doors[onegame["prize"]] *= "🚗"
 
 nds = 3
 n = 100
-results = Vector{Any}(undef, n)
+results = Vector{Vector{String}}(undef, n)
 for i in eachindex(results)
     doors = fill("🚪", nds)
     choice = 1
@@ -345,7 +356,7 @@ mean([any(results[i] .== "🚪👌🚗") for i in 1:n])
 
 ## 100 prisoners problem
 Random.seed!(2022);
-n = 100 # number of prisoners
+n = 1000 # number of prisoners
 prisoners = 1:n # prisoners' numbers
 # simulate the procedure of randomly open 50 (n/2) drawers
 function open_random(prisoners, n=length(prisoners)) 
@@ -392,7 +403,7 @@ end
 open_smart(prisoners)
 
 # survival probability of randomly open
-mean([open_random(prisoners) for i in 1:10000])
+mean([open_random(prisoners) for i in 1:100000])
 # survival probability of using the better strategy
 @time mean([open_smart(prisoners) for i in 1:100000])
 
