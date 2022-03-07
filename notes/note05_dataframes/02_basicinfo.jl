@@ -4,6 +4,7 @@ using DataFrames
 #' Let's start by creating a `DataFrame` object, `x`, so that we can learn how to get information on that data frame.
 x = DataFrame(A = [1, 2], B = [1.0, missing], C = ["a", "b"])
 #' The standard `size` function works to get dimensions of the `DataFrame`,
+x = DataFrame(rand(100, 50), :auto)
 size(x), size(x, 1), size(x, 2)
 #' as well as `nrow` and `ncol` from R.
 nrow(x), ncol(x)
@@ -35,9 +36,15 @@ x
 tmp = x.A
 x.A, x[!, 1], x[!, :A] # all get the vector stored in our DataFrame without copying it
 x."A", x[!, "A"] # the same using string indexing
+x."a and b"
+x[!, "a and b"]
 x[:, 1] # note that this creates a copy
-tmp = x[:, 1]
+tmp1 = x[:, 1]
+tmp2 = x[!, 1]
+tmp1 === x.A
+tmp2 === x.A
 x[:, 1] === x[:, 1]
+x[!, 1] === x[!, 1]
 #' To grab one row as a `DataFrame`, we can index as follows.
 x[1:1, :]
 x[1, :] # this produces a DataFrameRow which is treated as 1-dimensional object similar to a NamedTuple
@@ -67,6 +74,7 @@ x
 #' Here are examples of how `Cols` and `Between` can be used to select columns of a data frame.
 x = DataFrame(rand(4, 5), :auto)
 x[:, Between(:x2, :x4)]
+x[:, 2:4]
 x[:, Cols("x1", Between("x2", "x4"))]
 #' ### Views
 #' You can simply create a view of a `DataFrame` (it is more efficient than creating a materialized selection). Here are the possible return value options.
@@ -105,7 +113,6 @@ collect(pairs(eachcol(df)))
 #' The output confirms that the data frame `df` got corrupted.
 #' DataFrames.jl supports a complete set of `getindex`, `getproperty`, `setindex!`, `setproperty!`, `view`, broadcasting, and broadcasting assignment operations. The details are explained here: http://juliadata.github.io/DataFrames.jl/latest/lib/indexing/.
 #' ### Comparisons
-using DataFrames
 df = DataFrame(rand(2,3), :auto)
 df2 = copy(df)
 df == df2 # compares column names and contents

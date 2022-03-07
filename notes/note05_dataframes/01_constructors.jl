@@ -62,6 +62,7 @@ sdf = view(x, [1,1], :)
 typeof(sdf)
 #'     SubDataFrame{DataFrame, DataFrames.Index, Vector{Int64}}
 DataFrame(sdf)
+x[[1], :]
 dfr = x[1, :]
 DataFrame(dfr)
 #' ### Conversion to a matrix
