@@ -1,7 +1,7 @@
 ---
 author: "HaiYing Wang"
 title: "STAT 5125 - Generating reports using Weave.jl"
-date: "2022-02-13"
+date: "2022-03-07"
 ---
 
 
@@ -19,14 +19,9 @@ the weave command as follows:
 
 
 ```julia
-a = sum(rand(100))
-```
-
-```
+julia> a = sum(rand(100))
 44.90981244109621
 ```
-
-
 
 
 
@@ -36,11 +31,11 @@ The value of a is 44.90981244109621.
 ```julia
 using Weave
 #Markdown
-weave("example_note01_jmd.jmd", out_path="output/", doctype="github")
+weave("example_jmd.jmd", out_path="output/", doctype="github")
 #HTML
-weave("example_note01_jmd.jmd", out_path="output/", doctype="md2html")
+weave("example_jmd.jmd", out_path="output/", doctype="md2html")
 #pdf
-weave("example_note01_jmd.jmd", out_path="output/", doctype="md2pdf")
+weave("example_jmd.jmd", out_path="output/", doctype="md2pdf")
 ```
 
 
@@ -140,7 +135,7 @@ Note that `Date` is available since the chunk is evaluated first.
  ---
  title : Header Example
  author : Shuhei Kadowaki
- date: 2022-02-13
+ date: 2022-03-07
  ---
 
  ```julia; echo = false
@@ -216,18 +211,18 @@ weave_options:
 Loops and comprehensions rebind variables on each iteration, so they are 
 safe to use then creating closures in iteration:
 ```julia
-Fs = Array{Any}(undef, 2)
-for i in 1:2
-    Fs[i] = () -> i
-end
-Fs[1](), Fs[2]() # (1, 2)
-```
+julia> Fs = Array{Any}(undef, 2)
+2-element Vector{Any}:
+ #undef
+ #undef
 
-```
+julia> for i in 1:2
+           Fs[i] = () -> i
+       end
+
+julia> Fs[1](), Fs[2]() # (1, 2)
 (1, 2)
 ```
-
-
 
 
 
@@ -256,21 +251,26 @@ There are several plotting packages for Julia like Plots.jl (which is
 an umbrella packages for several plotting backends). Here we show how to use it
 (version 1.13.2):
 ```julia
-using Plots
-using Random
-Random.seed!(1) # make the plot reproducible
-x, y = 1:100, randn(100)
-plot(x, y) # line plot
-```
+julia> using Plots
 
-![](figures/example_note01_jmd_7_1.png)
+julia> using Random
+
+julia> Random.seed!(1) # make the plot reproducible
+TaskLocalRNG()
+
+julia> x, y = 1:100, randn(100)
+(1:100, [1.0857940215432762, -1.5765649225859841, 0.1759399913010747, 0.8653808054093252, -1.1886800049871964, 0.7878269862203976, 1.1780259137155593, 0.3855116016279269, 0.26751404691066, 0.0073860677115008865  …  1.219317449444866, 1.0026816589160366, -0.23882187003406924, -0.9176728852666434, 0.6258646186564968, -0.0693870114225401, -0.3915200830436959, 0.5844124189902179, -0.03131594785999865, -0.7531338971077326])
+
+julia> plot(x, y) # line plot
+```
+![](figures/example_jmd_7_1.png)
 
 
 You can also for instance hide the code and show only the figure, add a
 caption to the figure and make it wider as follows (you can only see the
 syntax from the source document):
 
-![A line plot.](figures/example_note01_jmd_fig:A_1.png)
+![A line plot.](figures/example_jmd_fig-A_1.png)
 
 
 
@@ -279,25 +279,42 @@ syntax from the source document):
 There are multiple packages supporting tabular data for the Julia language.
 Here we will show how DataFrames.jl package can be used.
 ```julia
-using DataFrames
-df = DataFrame(x=y, y=y) 
-first(df, 5)
-# print first 5 rows of a data frame; use the last function for last rows
-```
+julia> using DataFrames
 
-```
+julia> df = DataFrame(x=y, y=y)
+100×2 DataFrame
+ Row │ x            y
+     │ Float64      Float64
+─────┼──────────────────────────
+   1 │  1.08579      1.08579
+   2 │ -1.57656     -1.57656
+   3 │  0.17594      0.17594
+   4 │  0.865381     0.865381
+   5 │ -1.18868     -1.18868
+   6 │  0.787827     0.787827
+   7 │  1.17803      1.17803
+   8 │  0.385512     0.385512
+  ⋮  │      ⋮            ⋮
+  94 │ -0.917673    -0.917673
+  95 │  0.625865     0.625865
+  96 │ -0.069387    -0.069387
+  97 │ -0.39152     -0.39152
+  98 │  0.584412     0.584412
+  99 │ -0.0313159   -0.0313159
+ 100 │ -0.753134    -0.753134
+                 85 rows omitted
+
+julia> first(df, 5)
 5×2 DataFrame
- Row │ x           y
-     │ Float64     Float64
-─────┼────────────────────────
-   1 │  0.0619327   0.0619327
-   2 │  0.278406    0.278406
-   3 │ -0.595824   -0.595824
-   4 │  0.0466594   0.0466594
-   5 │  1.08579     1.08579
+ Row │ x          y
+     │ Float64    Float64
+─────┼──────────────────────
+   1 │  1.08579    1.08579
+   2 │ -1.57656   -1.57656
+   3 │  0.17594    0.17594
+   4 │  0.865381   0.865381
+   5 │ -1.18868   -1.18868
 ```
-
-
 
 
 
