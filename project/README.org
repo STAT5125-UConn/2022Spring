@@ -9,7 +9,7 @@ This project consists of two parts: an oral presentation and a written
 report. You may work alone or work with a partner on the project. If you work
 with a partner, the two students should give the oral presentation together. The
 written report and all source codes should be managed on github.com through the
-submission link (TBA). *The written report is due on TBA*.
+[[https://classroom.github.com/a/1e3Frc21][submission link]]. *The written report is due on TBA*.
 
 
 * Teams and Topics
@@ -21,16 +21,16 @@ if you are the first on in your team to accept the link, or you can join an
 existing team if your partner has created a team.
 
 ** Sita Nyame
-- [Publish.jl](https://github.com/MichaelHatherly/Publish.jl)
+- [[https://github.com/MichaelHatherly/Publish.jl][Publish.jl]]
 ** Yiran Qiao
-- [PyCall.jl](https://github.com/JuliaPy/PyCall.jl) 
+- [[https://github.com/JuliaPy/PyCall.jl][PyCall.jl]] 
 ** Xinhao Wang
-- [MATLAB.jl](https://github.com/JuliaInterop/MATLAB.jl)
+- [[https://github.com/JuliaInterop/MATLAB.jl][MATLAB.jl]]
 ** Justin Guilfoyle
-- [JuMP.jl](https://github.com/jump-dev/JuMP.jl)
+- [[https://github.com/jump-dev/JuMP.jl][JuMP.jl]]
 ** Boyang Tang, Fusheng Yang
-- [Gadfly.jl](http://gadflyjl.org/stable/)
+- [[http://gadflyjl.org/stable/][Gadfly.jl]]
 ** Jing Wang, Wenting Sun
-Use simulation to approximate [poker probabilities](https://en.wikipedia.org/wiki/Poker_probability).
+Use simulation to approximate [[https://en.wikipedia.org/wiki/Poker_probability][poker probabilities]].
 ** Andrew Slater - Craps
-Simulating the [Craps game](https://en.wikipedia.org/wiki/Craps).
+Simulating the [[https://en.wikipedia.org/wiki/Craps][Craps game]].
