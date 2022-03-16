@@ -5,17 +5,32 @@
 
 *Topic Sign Up Link*: https://classroom.github.com/a/MWhxJSvT
 
-*Submission Link*: TBA
-	
 This project consists of two parts: an oral presentation and a written
 report. You may work alone or work with a partner on the project. If you work
 with a partner, the two students should give the oral presentation together. The
 written report and all source codes should be managed on github.com through the
 submission link (TBA). *The written report is due on TBA*.
 
-# When you accept the invitation, you can create a new team if you work along or
-# if you are the first on in your team to accept the link, or you can join an
-# existing team if your partner has created a team.
 
-# The length of the oral presentation will be announced after the number of teams
-# are set.
+* Teams and Topics
+
+*Submission Link*: https://classroom.github.com/a/1e3Frc21
+
+When you accept the invitation, you can create a new team if you work along or
+if you are the first on in your team to accept the link, or you can join an
+existing team if your partner has created a team.
+
+** Sita Nyame
+- [Publish.jl](https://github.com/MichaelHatherly/Publish.jl)
+** Yiran Qiao
+- [PyCall.jl](https://github.com/JuliaPy/PyCall.jl) 
+** Xinhao Wang
+- [MATLAB.jl](https://github.com/JuliaInterop/MATLAB.jl)
+** Justin Guilfoyle
+- [JuMP.jl](https://github.com/jump-dev/JuMP.jl)
+** Boyang Tang, Fusheng Yang
+- [Gadfly.jl](http://gadflyjl.org/stable/)
+** Jing Wang, Wenting Sun
+Use simulation to approximate [poker probabilities](https://en.wikipedia.org/wiki/Poker_probability).
+** Andrew Slater - Craps
+Simulating the [Craps game](https://en.wikipedia.org/wiki/Craps).
