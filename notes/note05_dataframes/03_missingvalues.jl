@@ -94,14 +94,12 @@ println("After: ", eltype.(eachcol(x)))
 
 #' In this next example, we'll use `completecases` to find all the rows of a `DataFrame` that have complete data.
 x = DataFrame(A=[1, missing, 3, 4], B=["A", "B", missing, "C"])
-println("Complete cases:\n", completecases(x))
+completecases(x)
 x[completecases(x),:]
 
 #' We can use `dropmissing` or `dropmissing!` to remove the rows with incomplete data from a `DataFrame` and either create a new `DataFrame` or mutate the original in-place.
 y = dropmissing(x)
 dropmissing!(x)
-x
-y
 
 #' When we call `describe` on a `DataFrame` with dropped missing values, the columns do not allow missing values any more by default.
 describe(x)

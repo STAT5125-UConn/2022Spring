@@ -77,7 +77,7 @@ x[:, [:x1, :x4]]
 x[:, [true, false, true, false, true]]
 
 #' Here we create a single column `DataFrame`,
-x[:, [:x1]]
+x[!, [:x1]]
 
 #' and here we access the vector contained in column `:x1`.
 x[!, :x1] # use : instead of ! to copy

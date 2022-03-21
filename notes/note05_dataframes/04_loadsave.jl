@@ -20,6 +20,7 @@ print(read("x1.csv", String))
 y = CSV.read("x1.csv", DataFrame)
 
 #' Note that when loading in a `DataFrame` from a `CSV` the column type for column `:D` has changed!
+eltype.(eachcol(x))
 eltype.(eachcol(y))
 
 #' ### JDF.jl
