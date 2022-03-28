@@ -87,10 +87,8 @@ eltype.(eachcol(df))
 
 #' In this next example, we show that the type of each column in `x` is initially `Int64`. After using `allowmissing!` to accept missing values in columns 1 and 3, the types of those columns become `Union{Int64,Missing}`.
 x = DataFrame(rand(Int, 2,3), :auto)
-println("Before: ", eltype.(eachcol(x)))
 allowmissing!(x, 1) # make first column accept missings
 allowmissing!(x, :x3) # make :x3 column accept missings
-println("After: ", eltype.(eachcol(x)))
 
 #' In this next example, we'll use `completecases` to find all the rows of a `DataFrame` that have complete data.
 x = DataFrame(A=[1, missing, 3, 4], B=["A", "B", missing, "C"])
