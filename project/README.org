@@ -40,7 +40,7 @@ Simulating the [[https://en.wikipedia.org/wiki/Craps][Craps game]].
 
 The length of the oral presentation will be 15-20 minutes for each team.
 
-#+begin_src julia :eval no
+#+begin_src julia :eval no :exports none
 using Random
 Random.seed!(2022)
 teams = shuffle([
@@ -53,14 +53,14 @@ teams = shuffle([
     "Andrew Slater",
     "Graham Roberts"
 ])
-for (i, nm) in enumerate(teams) println("Team $i: $(nm)") end
+for (i, nm) in enumerate(teams) println("- Team $i: $(nm)") end
 #+end_src
 
-Team 1: Boyang Tang, Fusheng Yang
-Team 2: Graham Roberts
-Team 3: Sita Nyame
-Team 4: Andrew Slater
-Team 5: Jing Wang, Wenting Sun
-Team 6: Justin GuilfoyleY
-Team 7: Yiran Qiao
-Team 8: Xinhao Wang
+- Team 1: Boyang Tang, Fusheng Yang
+- Team 2: Graham Roberts
+- Team 3: Sita Nyame
+- Team 4: Andrew Slater
+- Team 5: Jing Wang, Wenting Sun
+- Team 6: Justin GuilfoyleY
+- Team 7: Yiran Qiao
+- Team 8: Xinhao Wang
