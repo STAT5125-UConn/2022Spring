@@ -40,7 +40,7 @@ Simulating the [[https://en.wikipedia.org/wiki/Craps][Craps game]].
 
 The length of the oral presentation will be 15-20 minutes for each team.
 
-#+begin_src julia :eval no :exports none
+#+begin_src julia :eval no :exports code
 using Random
 Random.seed!(2022)
 teams = shuffle([
