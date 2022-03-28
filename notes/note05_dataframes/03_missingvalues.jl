@@ -34,6 +34,8 @@ missing === missing
 isequal(1, missing)
 isless(10000, missing)
 isless(NaN, missing)
+isless(Inf, missing)
+isless(Inf, NaN)
 
 #' Many (not all) functions handle `missing`.
 map(x -> x(missing), [sin, cos, zero, sqrt]) # part 1

@@ -151,7 +151,7 @@ df.x1 = 1:3
 df[!, "column 2"] = 4:6
 df
 df."column 2"
-df[:, "column 2"]
+df[:, "column 2"] 
 
 #' or you can interpolate column name using `:()` syntax
 for n in names(df)
@@ -180,6 +180,7 @@ df = DataFrame(reshape(1:12, 3, 4), :auto)
 
 #' then `function_to_apply` gets columns selected by `source_columns` as positional arguments.
 transform(df, [:x1, :x2] => (./) => :res)
+df.res = df.x1 ./ df.x2
 transform(df, [:x1, :x2] => ByRow(/) => :res)
 
 #' One can omit passing `target_column_name` in which case it is automatically generated:

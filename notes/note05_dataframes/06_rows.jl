@@ -54,6 +54,7 @@ sort!(x, :x)
 y = sort(x, :id)
 
 #' here we sort by two columns, first is decreasing, second is increasing
+sort(x, [:y, :x])
 sort(x, [:y, :x], rev=[true, false])
 sort(x, [order(:y, rev=true), :x]) # the same as above
 
@@ -95,7 +96,7 @@ append!(x, x)
 append!(x, y)
 
 #' standard `repeat` function works on rows; also `inner` and `outer` keyword arguments are accepted
-repeat(x, 2)
+repeat(x, 3)
 
 #' `push!` adds one row to `x` at the end; one must pass a correct number of values unless `cols` keyword argument is passed
 push!(x, 1:5)
@@ -144,13 +145,14 @@ a = filter(r -> r.x1 > 2.5, x, view=true) # the same but as a view
 filter(:x1 => >(2.5), x)
 
 #' in place modification of `x`, an example with `do`-block syntax
-filter!(x) do r
+filter(x) do r
     if r.x1 > 2.5
         return r.x2 < 4.5
     end
     r.x3 < 3.5
 end
 
+# to continue
 #' A common operation is selection of rows for which a value in a column is contained in a given set. Here are a few ways in which you can achieve this.
 df = DataFrame(x=1:12, y=mod1.(1:12, 4))
 
