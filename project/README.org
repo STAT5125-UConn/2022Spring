@@ -35,6 +35,8 @@ Use simulation to approximate [[https://en.wikipedia.org/wiki/Poker_probability]
 ** Andrew Slater
 Simulating the [[https://en.wikipedia.org/wiki/Craps][Craps game]].
 
+** Graham Roberts
+Simulating the [[https://en.wikipedia.org/wiki/Blackjack][21 (blackjack)]].
 
 * Presentation schedule <2022-04-11 Mon>
 
