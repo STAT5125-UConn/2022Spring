@@ -29,8 +29,8 @@ x = DataFrame(id = [missing, 5, 1, 3, missing], x = 1:5)
 groupby(x, :id) # by default groups include mising values and are not sorted
 groupby(x, :id, sort=true, skipmissing=true) # but we can change it
 #' ### Performing transformations by group using `combine`, `select`, `select!`, `transform`, and `transform!`
-using Statistics
-using Pipe
+
+using Statistics, Pipe
 # ENV["LINES"] = 15 # reduce the number of rows in the output
 x = DataFrame(id=rand('a':'d', 100), v=rand(100))
 # apply a function to each group of a data frame
@@ -40,13 +40,13 @@ x = DataFrame(id=rand('a':'d', 100), v=rand(100))
 a = groupby(x, :id)
 combine(a, :v=>mean)
 
-x.id2 = axes(x, 1)
 # select and transform keep as many rows as are in the source data frame and in correct order
 # additionally transform keeps all columns from the source
 @pipe x |> groupby(_, :id) |> transform(_, :v=>mean)
 a = groupby(x, :id)
 transform(a, :v=>mean)
 # note that combine reorders rows by group of GroupedDataFrame
+x.id2 = axes(x, 1)
 @pipe x |> groupby(_, :id) |> combine(_, :id2, :v=>mean)
 a = groupby(x, :id)
 combine(a, :id2, :v=>mean)
@@ -58,6 +58,7 @@ combine(a, :v=>mean=>:res)
 @pipe x |> groupby(_, :id) |> combine(_, :v=>mean=>:res1, :v=>sum=>:res2, nrow=>:n)
 a = groupby(x, :id)
 combine(a, :v=>mean=>:res1, :v=>sum=>:res2, nrow=>:n)
+
 #' Additional notes:
 #' * `select!` and `transform!` perform operations in-place
 #' * The general syntax for transformation is `source_columns => function => target_column`

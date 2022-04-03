@@ -11,7 +11,7 @@ y = DataFrame(id=[1,2,5,6,missing], age=[21,22,23,24,99])
 #' * a vector containing a combination of `Symbol`s or strings or `Pair` of `Symbol`s or strings, e.g. `on=[:a1=>:a2, :b1]`
 #' ### Standard joins: inner, left, right, outer, semi, anti
 innerjoin(x, y, on=:ID=>:id) # missing is not allowed to join-on by default
-innerjoin(x, y, on=:ID=>:id, matchmissing=:equal)
+innerjoin(x, y, on=:ID=>:id, matchmissing=:equal) # in general not recommended
 innerjoin(x, y, on=:ID=>:id, matchmissing=:notequal)
 leftjoin(x, y, on="ID"=>"id", matchmissing=:notequal)
 rightjoin(x, y, on=:ID=>:id, matchmissing=:notequal)
