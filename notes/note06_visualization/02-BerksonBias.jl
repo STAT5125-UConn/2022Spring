@@ -20,7 +20,7 @@ md"""
 
 - Hollywood ruins good books.
    - [Popular books that were made into terrible movies](https://www.yardbarker.com/entertainment/articles/popular_books_that_were_made_into_terrible_movies/s1__29971472)
-   - [Bad Books That Made Great Films](https://www.cinelinx.com/movie-news/movie-stuff/bad-books-that-made-great-films)
+   - [Great Movies Based on Bad Books](https://www.listchallenges.com/great-movies-based-on-bad-books)
 
 - Handsome men are such jerks.
 - More talented people are less attractive.
@@ -34,11 +34,11 @@ md"""
 
 """
 
-# ╔═╡ ed63646b-1c90-4962-baa6-30f2dc916292
-[30/100, 300/370]
-
 # ╔═╡ f79bf3cc-56e9-45b3-a8f7-bfa1932111d8
-[30/100, 300/1000]
+30/100, 300/1000;
+
+# ╔═╡ 3de911a6-9224-47a9-a4ad-270b6d3a5287
+30/100, 300/370;
 
 # ╔═╡ 0429a29e-1765-4486-8dac-1cabdd59316d
 md"""
@@ -972,8 +972,8 @@ version = "0.9.1+5"
 
 # ╔═╡ Cell order:
 # ╟─646db18a-6694-4f5a-b0b8-22e5c86f3a85
-# ╠═ed63646b-1c90-4962-baa6-30f2dc916292
 # ╠═f79bf3cc-56e9-45b3-a8f7-bfa1932111d8
+# ╠═3de911a6-9224-47a9-a4ad-270b6d3a5287
 # ╟─0429a29e-1765-4486-8dac-1cabdd59316d
 # ╠═36444036-6fe7-4997-8613-1a490fb70704
 # ╟─63968b01-af89-4a99-9d8b-068b25973657
