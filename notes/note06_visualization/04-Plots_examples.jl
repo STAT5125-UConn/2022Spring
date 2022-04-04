@@ -13,12 +13,13 @@ plot(fdat, w = 3)
 #' The option `w=3` specify the line width. Here are examples with other commonly used options.
 
 plot(fdat, title = "First figure", label = "Line " .* string.(collect(1:5)'),
-     size = 1.2 .*(500, 300), lw = 3,
+     size = 1.2 .*(500, 300),
+     lw = 3,
      # m=(3, :auto),
      markershape=[:circle :rect :star5 :diamond :utriangle],
      tickfontsize=12, xguidefontsize=12, yguidefontsize=12,
      legendfontsize=10, grid=true, thickness_scaling=1,
-     xlabel="x1", ylabel="y", legend=:topright
+     xlabel="x1", ylabel="y", legend=:topleft
      )
 
 # Possible markershape [:none, :auto, :circle, :rect, :star5, :diamond, :hexagon, :cross, :xcross, :utriangle, :dtriangle, :rtriangle, :ltriangle, :pentagon, :heptagon, :octagon, :star4, :star6, :star7, :star8, :vline, :hline, :+, :x].
@@ -52,6 +53,7 @@ gif(anim, "animation_example.gif", fps=20)
 #' Plot function pair (x(u), y(u)).
 
 plot(sin, x-> sin(2x), 0, 2π, line=4, legend=false, fill=(0, :orange))
+plot(x -> x, x-> sin(2x), 0, 2π, line=4, legend=true)
 
 #' ### Colors
 
@@ -64,6 +66,8 @@ plot(0:10:100, dat, w=3)
 plot(0:10:100, dat, w=3, α=0.5)
 plot(0:10:100, dat, w=3, fill=0, α=0.5)
 plot(0:10:100, dat, w=3, fill=0, α=0.5, palette=cgrad(:grays))
+
+# to continue
 y = rand(100);
 plot(y, seriestype=:scatter)
 scatter(y)

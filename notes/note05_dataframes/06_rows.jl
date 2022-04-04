@@ -152,7 +152,6 @@ filter(x) do r
     r.x3 < 3.5
 end
 
-# to continue
 #' A common operation is selection of rows for which a value in a column is contained in a given set. Here are a few ways in which you can achieve this.
 df = DataFrame(x=1:12, y=mod1.(1:12, 4))
 
@@ -161,11 +160,12 @@ filter(row -> row.y in [1,4], df)
 filter(:y => in([1,4]), df)
 df[in.(df.y, Ref([1,4])), :]
 
+1:3 .∈ [[1, 2]]
 1:3 .∈ Ref([1, 2])
 
 #' DataFrames.jl also provides a `subset` function that works on whole columns and allows for multiple conditions:
 x = DataFrame([1:4, 2:5, 3:6], :auto)
-subset(x, :x1 => x -> x .< mean(x), :x2 => ByRow(<(2.5)))
+subset(x, "x1" => x -> x .< mean(x), :x2 => ByRow(<(2.5)))
 #' Similarly an in-place `subset!` function is provided.
 
 #' ### Deduplicating
