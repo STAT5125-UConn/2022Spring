@@ -66,3 +66,38 @@ for (i, nm) in enumerate(teams) println("- Team $i: $(nm)") end
 - Team 6: Justin GuilfoyleY
 - Team 7: Yiran Qiao
 - Team 8: Xinhao Wang
+
+* Project interactions
+Give other all other students "Read" access to your project repo. Although not
+required, everyone is requested to provide feedback on other teams' work by
+creating issues because this will be helpful for the each team to improve their
+work.
+
+Every student must assign an overall score for each team (scale 1-10) except
+your own team. The score should take into account the presentation and the writing materials in the project repo. Fill the file [[./ProjectScore.md][ProjectScore]] with your scores for all other teams and send it to <haiying.wang@uconn.edu> by 8pm Sunday, May 1, 2022.
+
+*If you do not send me the filled form by May 1, you will lose this portion of the credits; if the team did not give access to any other students, the ream will lose the corresponding credits.*
+
+The following lists are the GitHub accounts and links to all the project repos for your convenience.
+
+*** GitHub accounts for team members
+- Guilfoyle, Justin: @jguil2022
+- Nyame, Sita Baaba: @SitaNy
+- Qiao, Yiran: @AeliaPrima
+- Roberts, Graham William: @grahamWroberts
+- Slater, Andrew E: @andyslater
+- Sun, Wenting: @WentingS
+- Tang, Boyang: @Boyango
+- Wang, Jing: @MaayaWANG
+- Wang, Xinhao: @Xin-hao
+- Yang, Fusheng: @fushengyy
+
+*** Project list of repos
+- Team 1: Boyang Tang, Fusheng Yang - [repo](https://github.com/STAT5125-UConn/final-project-gadfly-jl)
+- Team 2: Graham Roberts - TBA
+- Team 3: Sita Nyame - [repo](https://github.com/STAT5125-UConn/final-project-publish-ji)
+- Team 4: Andrew Slater - [repo](https://github.com/STAT5125-UConn/final-project-craps)
+- Team 5: Jing Wang, Wenting Sun - [repo](https://github.com/STAT5125-UConn/final-project-poker-similation)
+- Team 6: Justin GuilfoyleY - [repo](https://github.com/STAT5125-UConn/final-project-jump-jl)
+- Team 7: Yiran Qiao - [repo](https://github.com/STAT5125-UConn/final-project-pycall-jl)
+- Team 8: Xinhao Wang - [repo](https://github.com/STAT5125-UConn/final-project-matlab-jl)
