@@ -70,7 +70,7 @@ for (i, nm) in enumerate(teams) println("- Team $i: $(nm)") end
 * Project interactions
 Give other all other students "Read" access to your project repo. Although not
 required, everyone is requested to provide feedback on other teams' work by
-creating issues because this will be helpful for the each team to improve their
+creating issues or pull requests because this will be helpful for the each team to improve their
 work.
 
 Every student must assign an overall score for each team (scale 1-10) except
