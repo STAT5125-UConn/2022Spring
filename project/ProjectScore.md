@@ -5,7 +5,7 @@ your own team. The score should take into account the presentation and the writi
 
 - Team 1: Boyang Tang, Fusheng Yang - [repo](https://github.com/STAT5125-UConn/final-project-gadfly-jl)
   - score:
-- Team 2: Graham Roberts - TBA
+- Team 2: Graham Roberts - [repo](https://github.com/STAT5125-UConn/final-project-blackjack-1)
   - score:
 - Team 3: Sita Nyame - [repo](https://github.com/STAT5125-UConn/final-project-publish-ji)
   - score:

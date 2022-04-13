@@ -93,11 +93,11 @@ The following lists are the GitHub accounts and links to all the project repos f
 - Yang, Fusheng: @fushengyy
 
 *** Project list of repos
-- Team 1: Boyang Tang, Fusheng Yang - [repo](https://github.com/STAT5125-UConn/final-project-gadfly-jl)
-- Team 2: Graham Roberts - TBA
-- Team 3: Sita Nyame - [repo](https://github.com/STAT5125-UConn/final-project-publish-ji)
-- Team 4: Andrew Slater - [repo](https://github.com/STAT5125-UConn/final-project-craps)
-- Team 5: Jing Wang, Wenting Sun - [repo](https://github.com/STAT5125-UConn/final-project-poker-similation)
-- Team 6: Justin GuilfoyleY - [repo](https://github.com/STAT5125-UConn/final-project-jump-jl)
-- Team 7: Yiran Qiao - [repo](https://github.com/STAT5125-UConn/final-project-pycall-jl)
-- Team 8: Xinhao Wang - [repo](https://github.com/STAT5125-UConn/final-project-matlab-jl)
+- Team 1: Boyang Tang, Fusheng Yang - https://github.com/STAT5125-UConn/final-project-gadfly-jl
+- Team 2: Graham Roberts - https://github.com/STAT5125-UConn/final-project-blackjack-1
+- Team 3: Sita Nyame - https://github.com/STAT5125-UConn/final-project-publish-ji
+- Team 4: Andrew Slater - https://github.com/STAT5125-UConn/final-project-craps
+- Team 5: Jing Wang, Wenting Sun - https://github.com/STAT5125-UConn/final-project-poker-similation
+- Team 6: Justin GuilfoyleY - https://github.com/STAT5125-UConn/final-project-jump-jl
+- Team 7: Yiran Qiao - https://github.com/STAT5125-UConn/final-project-pycall-jl
+- Team 8: Xinhao Wang - https://github.com/STAT5125-UConn/final-project-matlab-jl
