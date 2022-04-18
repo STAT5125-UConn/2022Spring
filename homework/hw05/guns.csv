@@ -1,0 +1,52 @@
+State,HomicideRate,GunAccidentRate,Sum,BradyScore,BradyLetter,BradyLH
+Alabama,7.1,0.44,7.54,3.5,D‐,L
+Alaska,4.1,0.0,4.1,-7.0,F,L
+Arizona,5.5,0.1,5.6,-8.0,F,L
+Arkansas,5.9,0.41,6.31,1.0,F,L
+California,5.0,0.08,5.08,75.0,A‐,H
+Colorado,3.1,0.18,3.28,14.5,C,H
+Connecticut,4.1,0.0,4.1,70.0,A‐,H
+D.C.,13.9,0.0,13.9,50.0,B,H
+Delaware,6.2,0.0,6.2,34.5,B‐,H
+Florida,5.2,0.13,5.33,3.0,F,L
+Georgia,5.9,0.29,6.19,2.0,F,L
+Hawaii,2.1,0.0,2.1,58.5,B+,H
+Idaho,1.8,0.38,2.18,0.0,F,L
+Illinois,5.8,0.14,5.94,45.0,B,H
+Indiana,4.7,0.22,4.92,4.5,D‐,L
+Iowa,1.5,0.11,1.61,14.0,C‐,H
+Kansas,2.9,0.2,3.1,-4.0,F,L
+Kentucky,4.5,0.4,4.9,-3.5,F,L
+Louisiana,10.8,0.75,11.55,-2.0,F,L
+Maine,1.9,0.0,1.9,3.0,F,L
+Maryland,6.3,0.07,6.37,66.5,A‐,H
+Massachusetts,1.8,0.0,1.8,60.5,B+,H
+Michigan,7.0,0.09,7.09,15.0,C,H
+Minnesota,1.8,0.08,1.88,19.5,C,H
+Mississippi,7.4,0.65,8.05,-4.0,F,L
+Missouri,6.5,0.33,6.83,-0.5,F,L
+Montana,2.7,0.43,3.13,-3.0,F,L
+Nebraska,2.9,0.29,3.19,6.5,D,L
+Nevada,4.5,0.13,4.63,1.5,F,L
+New Hampshire,1.1,0.0,1.1,5.5,D‐,L
+New Jersey,4.4,0.0,4.4,68.5,A‐,H
+New Mexico,5.6,0.0,5.6,0.0,F,L
+New York,3.5,0.02,3.52,65.5,A‐,H
+North Carolina,4.9,0.29,5.19,1.5,F,L
+North Dakota,4.0,0.0,4.0,2.0,F,L
+Ohio,4.3,0.14,4.44,10.0,D,L
+Oklahoma,5.7,0.39,6.09,1.0,F,L
+Oregon,2.4,0.13,2.53,11.0,D+,L
+Pennsylvania,5.4,0.28,5.68,20.0,C,H
+Rhode Island,3.2,0.0,3.2,41.5,B‐,H
+South Carolina,6.9,0.41,7.31,1.0,F,L
+South Dakota,3.0,0.0,3.0,-4.5,F,L
+Tennessee,6.0,0.37,6.37,2.0,F,L
+Texas,4.4,0.18,4.58,1.5,F,L
+Utah,1.8,0.0,1.8,-2.0,F,L
+Vermont,1.3,0.0,1.3,-4.0,F,L
+Virginia,3.8,0.13,3.93,7.0,D,L
+Washington,3.0,0.12,3.12,19.5,C,H
+West Virginia,3.9,0.23,4.13,3.0,F,L
+Wisconsin,3.0,0.09,3.09,13.0,C‐,H
+Wyoming,2.4,0.0,2.4,-5.0,F,L
