@@ -74,7 +74,12 @@ creating issues or pull requests because this will be helpful for the each team 
 work.
 
 Every student must assign an overall score for each team (scale 1-10) except
-your own team. The score should take into account the presentation and the writing materials in the project repo. Fill the file [[./ProjectScore.md][ProjectScore]] with your scores for all other teams and send it to <haiying.wang@uconn.edu> by 8pm Sunday, May 1, 2022.
+your own team. The score should take into account the presentation and the writing materials in the project repo. Fill the file [[./ProjectScore.md][ProjectScore]] with your scores for all other teams and send it to haiying.wang@uconn.edu by 8pm Sunday, May 1, 2022. Do not push your filled form to any repo.
+
+Deadlines:
+
+- Step 1: give other students access to your project repo by *8 PM <2022-04-19 Tue>*
+- Step 2: send your filled  [[./ProjectScore.md][ProjectScore]] to haiying.wang@uconn.edu by *8 PM <2022-05-01 Sun>*
 
 *If you do not send me the filled form by May 1, you will lose this portion of the credits; if the team did not give access to any other students, the ream will lose the corresponding credits.*
 
