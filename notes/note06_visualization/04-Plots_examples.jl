@@ -117,7 +117,7 @@ scatter!(range(0, 500, length=30), 100 .+ 300rand(30))
 #' `line`.) Note that we pass a matrix of colors, and this applies the
 #' colors to each series.
 
-ys = Vector[rand(10), rand(20)]
+ys = [rand(10), rand(20)]
 plot(ys, color = [:red :orange], line = (:dot, 9), marker = ([:hex :star], 12, 0.8, Plots.stroke(3, :gray)))
 
 #' ### Build plot in pieces
