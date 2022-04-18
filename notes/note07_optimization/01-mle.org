@@ -1,0 +1,299 @@
+# -*- org-confirm-babel-evaluate: nil -*-
+#+TITLE: Maximum likelihood estimation
+#+AUTHOR: HaiYing Wang
+
+# #+begin_export html
+# <meta http-equiv="refresh" content="10" >
+# #+end_export
+
+*** Export Configuration                                  :noexport:
+
+#+startup: beamer content hideblocks
+
+#+options: H:2 timestamp:nil date:nil tasks tex:t num:3 toc:1
+#+options: author:t creator:nil html-postamble:nil
+
+#+LaTeX_CLASS: beamer
+#+latex_compiler: lualatex 
+#+latex_class_options: [serif,hidelinks]
+#+latex_header: \usepackage{fontspec,unicode-math}
+#+latex_header: \newfontfamily\chinese{FandolSong}%%%
+#+latex_header: \newfontfamily\notoemoji{Noto Color Emoji}[Renderer=HarfBuzz]
+#+latex_header: \directlua{luaotfload.add_fallback
+#+latex_header:   ("emojifallback", {"NotoColorEmoji:mode=harf;"})}
+#+latex_header: \setmainfont{Symbola}[RawFeature={fallback=emojifallback}]
+#+latex_header: \setmonofont{DejaVu Sans Mono}[RawFeature={fallback=emojifallback}]
+#+latex_header: \makeatletter
+#+latex_header: \@ifclassloaded{beamer}{
+#+latex_header:      \usetheme{CambridgeUS}
+#+latex_header:      \usecolortheme{wolverine}
+#+latex_header:      \usecolortheme{orchid}
+#+latex_header:      \setbeamertemplate{navigation symbols}{}
+#+latex_header:      }{
+#+latex_header:      \usepackage[margin=1in]{geometry}
+#+latex_header:      }
+#+latex_header: \makeatother 
+#+latex_header: \usepackage{breakurl,xcolor,multicol}
+#+latex_header: \setlength{\parindent}{0cm}
+#+latex_header: \setminted[julia]{frame=none, bgcolor=lightgray, frame=double,
+#+latex_header:      fontsize=\footnotesize, linenos, numbersep=2pt}
+#+latex_header: \setmintedinline[julia]{bgcolor=lightgray}
+
+# Beamer
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col)
+
+# #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="file:///home/ossifragus/Dropbox/mydoc/reinstallOS/style/github-pandoc.css"/>
+# #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+# #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+# #+INFOJS_OPT: view:t toc:t ltoc:t mouse:underline buttons:0 path:http://thomasf.github.io/solarized-css/org-info.min.js
+# #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://thomasf.github.io/solarized-css/solarized-light.min.css" />
+
+# org-re-reveal
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:true reveal_control:t reveal_hash:true reveal_slide_number:h.v
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_width:1320 reveal_height:990 reveal_single_file:t
+#+REVEAL_PLUGINS: nil
+#+REVEAL_MIN_SCALE: 0.2
+#+REVEAL_MAX_SCALE: 3
+#+REVEAL_MARGIN: 0.01
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TRANS: none
+# slide cube None/Fade/Slide/Convex/Concave/Zoom
+#+REVEAL_THEME: serif
+# Black/White/League/Sky/Beige/Simple/Serif/Blood/Night/Moon/Solarized
+#+REVEAL_EXTRA_CSS: file:///home/ossifragus/Dropbox/mydoc/reinstallOS/style/mystyle.css
+#+REVEAL_ROOT: file:///home/ossifragus/Dropbox/mydoc/reinstallOS/reveal.js
+
+#+begin_export latex
+%%% Local Variables:
+%%% coding: utf-8
+%%% TeX-engine: luatex
+%%% TeX-command-extra-options: "-shell-escape"
+%%% End:
+#+end_export
+
+** A simple example: Coin tosses
+- Coin tosses have binary outcomes: a Head (H) or a Tail (T).
+- Assume that different coin tosses don't impact each other.
+- In statistics, this implies that coin toss outcomes are independent
+  and identically distributed, or i.i.d..
+- Assume that the coin is biased.
+- Let the probability of getting a Head be $p$ and the probability of
+  getting a Tail be $1-p$.
+- So how do we find that value of $p$?
+
+Let's toss the coin five times, and assume that we get the following
+sequence: H,T,T,H,H.
+
+# #+REVEAL: split
+
+** Likelihood
+The probability of seeing this result is
+\[L(p) = p(1-p)(1-p)pp = p^3(1-p)^2\]
+where 3 is the number of Heads
+and 2 is the number of Tails.
+
+More generally, if we have a total of
+$N$ tosses, out of which $n$ are Heads, then the probability is
+written in a generic function form:
+\[L(p) = p^n(1-p)^{N-n}\]
+
+- Here, $L(p)$ is the likelihood of observing the data.
+- It is a function of the unknown parameter $p$.
+- We want to use the maximizer of $L(p)$ to estimate $p$.
+- The maximum likelihood estimator (MLE) is
+  \[\hat{p}=\arg\max_{p}L(p).\]
+
+** Maximum likelihood
+
+The estimation problem now becomes an optimization problem.
+
+- Here we can differentiate $L$ with respect to $p$ and set it equal
+  to zero to find the optimal value of $p$ \[L'(p)= \frac{dL}{dp}=0\]
+- This will give us a complicated expression:
+  \[L'(p)=np^{n-1}(1-p)^{N-n} - (N-n)(1-p)^{N-n-1}p^n=0\]
+- This equation is not easy to solve, neither analytically nor numerically.
+
+** Log-likelihood
+Now we consider the log-likelihood function.
+
+- Let $l(p)=\log\{L(p)\}$, namely,
+  \[l(p) = n\log p + (N-n)\log(1-p).\]
+- The maximizer of $L(P)$ is the same as the maximizer of $l(p)$.
+- Thus $\hat{p}$ is the solution to
+  \[l'(p)= \frac{\partial l}{\partial p}=\frac{n}{p}-\frac{N-n}{1-p}=0,\]
+  which is
+	\[\hat{p}=\frac{n}{N}=\frac{3}{5}=0.6.\]
+
+	How to quantify the uncertainty of this $\hat{p}$?
+
+** Shape of the log-likelihood
+Let's plot the log-likelihood function.
+
+# #+begin_src julia :results raw :exports both :session main
+#+begin_src julia :eval no-export :session main :results graphics :file example.png :exports both
+  n = 3
+  N = 5
+  p̂ = n/N
+  l(p) = n * log(p) + (N-n) * log(1-p)
+  ps = collect(LinRange(0.001, 0.999, 100))
+  using Plots
+  plot(ps, l.(ps), xlab="p", ylab="Likelihood", legend=false)
+  savefig("likelihood.png")
+#+end_src
+
+#+NAME:   fig:01
+#+ATTR_HTML: :width 50% :class middle
+[[./likelihood.png]]
+
+# ** 
+# #+begin_src julia :results raw :exports both
+#   rand(3)
+# #+end_src
+
+#+reveal: split
+**** Solving the problem numerically
+#+begin_src julia :session main :exports both :eval no
+using Optim
+l(p) = -3 * log(p) - 2 * log(1 -p)
+res = optimize(l, 0, 1)
+summary(res)
+Optim.minimum(res)
+Optim.minimizer(res)
+#+end_src
+
+#+RESULTS:
+: 0.6000000004335264
+
+
+** Logistic regression
+		Let $y\in\{0,1\}$ be binary, and given covariate $x$, the probability for $y=1$ is
+		
+\begin{equation}
+\label{eq:3}
+p_{x}(\theta)=\Pr(y=1\mid x) = \frac{e^{x^{T}\theta}}{1+e^{x^{T}\theta}}.
+\end{equation} 
+
+For a given data $(x_{i},y_{i}), i=1, ...N$, the log-likelihood for $\theta$ is
+\begin{align}
+\label{eq:1}
+l(\theta) &= \sum_{i=1}^{N}\{y_{i}\log p_{x_{i}} + (1-y_{i})\log(1-p_{x_{i}})\}\\
+     &= \sum_{i=1}^{N}\{y_{i}x_{i}^{T}\theta + \log(1+e^{x_{i}^{T}\theta})\}.
+\end{align}
+
+The MLE is $\hat{\theta}=\arg\max_{p}l(\theta)$. How should we find it? Solving
+
+\begin{align}
+l'(\theta)= \sum_{i=1}^{N}\{y_{i}-p_{x_i}(\theta)\}x_{i}=0.
+\end{align}
+
+# #+begin_src latex
+# \begin{align}
+# \frac{1}{\alpha} 
+# \end{align}
+# #+end_src
+
+
+#+reveal: split
+**** Example: Income
+An [[https://archive.ics.uci.edu/ml/datasets/adult][income data set]] was extracted from the 1994 Census
+database. There are totally $48,842$ observations in this data set, and the response variable is whether a person's income exceeds $50K a
+year.
+# There are 11,687 individuals (23.93\%) in the data whose income exceed $50K a year.
+
+Can we classify if a person's income exceeds $50K if we know the
+following covariates:
+
+- $x_1$, age;
+- $x_2$, final weight (Fnlwgt);
+- $x_3$, highest level of education in numerical form;
+- $x_4$, capital loss (LosCap);
+- $x_5$, hours worked per week. 
+
+** Newton’s Method
+
+A fast approach of root find for a differentiable function, say $g(x)=0$. The methods starts from some initial value $x_0$, and for $t = 0, 1, \ldots$, compute 
+\begin{align*}
+  x_{t+1} = x_t - \left\{\frac{\partial g(x_t)}{\partial x_{t}^{T}}\right\}^{-1}g(x_t)
+\end{align*}
+until $x_t$ converges.
+
+The method is based on a linear expansion of $g(x)$. The method is also known as Newton--Raphson iteration. It needs an initial value $x_0$. If $g(x) = 0$ has multiple solutions, the end result depends on $x_0$.
+
+Applied to optimization of $l$, this method solves $g=l'=0$ and it requires the Hessian $l''$,
+which can be difficult to obtain, especially for multivariate functions.
+Many variants of Newton's method avoid the computation of the Hessian.
+
+
+#+reveal: split
+
+For example, to obtain MLE for logistic regression with likelihood $l(\theta)$,
+# Fisher scoring replaces $-l''(\theta_t)$ with $I(\theta_t)$. Generally, one uses Fisher scoring in the beginning to make rapid improvements, and Newton's method for refinement near the end.
+\begin{align}
+l'(\theta)&=\sum_{i=1}^{N}\{y_{i}-p_{x_i}(\theta)\}x_{i};\\
+l''(\theta)&=-\sum_{i=1}^N w_i(\theta^{(t)})x_ix_i^T.
+\end{align}
+where $w_i(\theta)=p_i(\theta)\{1-p_i(\theta)\}$.
+
+Thus we can obtain the MLE by iteratively applying the following
+
+\begin{equation}
+  \hat{\theta}^{(t+1)}=\hat{\theta}^{(t)}
+  -\left\{l''(\theta^{(t)})\right\}^{-1}l'(\theta^{(t)}).\tag{1}
+\end{equation}
+
+The above iterative formula is not restricted to logistic regression.
+
+How good is the MLE?
+
+** Property of the MLE
+
+Consider a random sample $X_1, \ldots, X_N$ of size $N$ coming from a distribution with density function $f(x|\theta)$, where $\theta$ is a parameter vector. The MLE $\hat\theta_N$ of the unknown parameter $\theta$ is obtained by maximizing the loglikelihood function
+\[
+l(\theta) = \sum_{i=1}^N l_{i}(\theta) = \sum_{i=1}^N \log f(X_i | \theta)
+\]
+with respect to $\theta$.
+Typically, $\hat\theta_{N}$ is the solution to the score equation $l'(\theta) = 0$.
+
+Let $l''(\theta)$ be the Hessian. Under very mild assumptions
+\begin{equation}
+  \hat\theta_N \overset{a}{\sim} N\left(\theta, \{-l''(\theta)\}^{-1}\right).
+\end{equation}
+
+# The expectation in of $-l''(\theta)/N$, denoted as $I(\theta)=E\{-l''(\theta)\}/N$ is the Fisher information matrix and $-l''(\theta)/N\to I(\theta)$ in probability as $N$ gets large.
+
+#+reveal: split
+
+The MLE is the most efficient estimator among all unbiased estimators; its asymptotic variance is the smallest among all unbiased estimators.
+
+The asymptotic variance of the MLE can be estimated by inverting the observed Fisher information matrix $-l''(\hat\theta_N)$, i.e., 
+$\{-l''(\hat\theta)\}^{-1}$. This is available at the convergence of the Newton's method. 
+
+# Large sample results state that,
+# as $n \to \infty$, $\hat\theta_n$ is consistent for $\theta$ and
+# $\sqrt{n} (\hat\theta_n - \theta)$ converges in distribution to
+
+
+#+reveal: split
+*M-estimator*
+
+- More generally in Statistics, M-estimators are a broad class of extremum estimators obtained by maximizing or minimizing an data dependent objective function.
+
+- Both non-linear least squares and maximum likelihood estimation are special cases of M-estimators.
+
+- The definition of M-estimators was motivated by robust statistics, which contributed new types of M-estimators.
+
+- When the objective function is smooth, the M-estimator can be obtained by solving the corresponding "score" equation.
+
+- Clearly, optimization or root-finding are very important in Statistics.
+
+# #+begin_src julia
+# function f(τ) 👨 😄
+# return π * τ
+# end
+# ClopperPearson = function (n::Int64, B::Int64, α=0.05)
+#   ϕ+ϕ₂
+#   # α = 0.05 ϕ+ϕ₂
+#   # quantile(FDist(2(n-B+1), 2B), α/2)
+#   end
+# #+end_src
