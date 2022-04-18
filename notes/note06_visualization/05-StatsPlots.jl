@@ -45,6 +45,7 @@ using StatsPlots # Required for the DataFrame user recipe
 #' data:
 
 using Distributions
+plot(Normal(3, 5))
 plot(Normal(3, 5), lw = 3)
 
 #' Thus type recipes are a very convenient way to plot a specialized type which
@@ -56,7 +57,7 @@ plot(Normal(3, 5), lw = 3)
 
 df = DataFrame(x = randn(1000), y = randn(1000))
 @df df marginalhist(:x, :y)
-@df df marginalhist(:x, :y, bins=(10, 10))
+@df df marginalhist(:x, :y, bins=(20, 10))
 
 #' ### Using Series Recipes
 #' 
@@ -69,6 +70,8 @@ y = randn(100, 4) # Four series of 100 points each
 histogram(y[:,1], normalize=true)
 density(y[:,1])
 violin(["y1"], y[:,1])
+plot(density(y[:,1]), violin(["y1"], y[:,1]))
+boxplot(["y1"], y[:,1])
 boxplot!(["y1"], y[:,1])
 violin(["Series 1" "Series 2" "Series 3" "Series 4"], y, leg = false)
 
@@ -129,7 +132,7 @@ plot(p1, p2, layout=(1, 2))
 
 iris = dataset("datasets", "iris")
 @df iris andrewsplot(:Species, cols(1:4), legend = :topleft)
-andrewsplot(reshape(1:15, 3,5))
+andrewsplot(reshape(1:30, 3,10))
 
 #' Distributions
 
@@ -247,6 +250,10 @@ dat = rand(5, 2)
 groupedbar(nam, dat, group = ctg, xlabel = "Groups", ylabel = "Scores",
         title = "Scores by group and category", bar_width = 0.67,
         lw = 0, framestyle = :box)
+
+groupedbar(nam, dat, group = ctg, xlabel = "Groups", ylabel = "Scores",
+        title = "Scores by group and category", bar_width = 0.67,
+        lw = 0, framestyle = :box, bar_position=:stack)
 
 #+ eval=false; echo = false; results = "hidden"
 

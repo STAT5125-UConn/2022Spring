@@ -67,7 +67,6 @@ plot(0:10:100, dat, w=3, α=0.5)
 plot(0:10:100, dat, w=3, fill=0, α=0.5)
 plot(0:10:100, dat, w=3, fill=0, α=0.5, palette=cgrad(:grays))
 
-# to continue
 y = rand(100);
 plot(y, seriestype=:scatter)
 scatter(y)
@@ -152,7 +151,7 @@ styles = filter((s->begin
 styles = reshape(styles, 1, length(styles)) # or use: `permutedims(styles)`
 n = length(styles)
 y = cumsum(randn(20, n), dims = 1)
-plot(y, line = (3, styles), label = map(string, styles), m=:auto, legendtitle = "linestyle")
+plot(y, line = (3, styles), label = map(string, styles), m=:auto, legendtitle = "linestyle", leg=:bottomleft)
 
 #' ### Marker types
 
@@ -179,7 +178,7 @@ bar(dat, α=0.6)
 #' Use the `layout` keyword, and optionally the convenient `@layout` macro
 #' to generate arbitrarily complex subplot layouts.
 
-l = @layout([a{0.1h}; b [c; d e]])
+l = @layout([a{0.4h}; b [c; d e]])
 plot(randn(100, 5))
 plot(randn(100, 5), layout = l, t = [:line :histogram :scatter :steppre :bar], leg = false, ticks = nothing, border = :none)
 
@@ -288,7 +287,7 @@ heatmap(xs, ys, z, aspect_ratio = 1)
 #' ### Layouts, margins, label rotation, title location
 
 using Plots.PlotMeasures
-plot(rand(100, 6), layout = @layout([a b; c]), title = ["A" "B" "C"], titlelocation = :left, left_margin = [20mm 0mm], bottom_margin = 10px, xrotation = 60)
+plot(rand(100, 6), layout = @layout([a b; c]), title = ["A" "B" "C"], titlelocation = :left, left_margin = [20mm 10mm], bottom_margin = 10px, xrotation = 60)
 plot(rand(100, 6), layout = @layout([a b; c]), title = ["A" "B" "C"], titlelocation = :left, left_margin = [20mm 0mm], bottom_margin = 10px, xrotation = 90, yrotation=90)
 
 #' ### Animation with subplots
@@ -337,6 +336,7 @@ x = t .* cos.(θ)
 y = t .* sin.(θ)
 p1 = plot(x, y, linewidth = 3, line_z = t, legend = false)
 p2 = scatter(x, y, marker_z = (+), color = :bluesreds, legend = false)
+p2 = scatter(x, y, marker_z = x+y, color = :bluesreds, legend = false)
 plot(p1, p2)
 
 #' ### Unconnected lines using `missing` or `NaN`
@@ -363,12 +363,14 @@ plot([(0, 0), (0, 0.9), (1, 0.9), (2, 1), (3, 0.9), (80, 0)], legend = :outertop
 plot!([(0, 0), (0, 0.9), (2, 0.9), (3, 1), (4, 0.9), (80, 0)])
 plot!([(0, 0), (0, 0.9), (3, 0.9), (4, 1), (5, 0.9), (80, 0)])
 plot!([(0, 0), (0, 0.9), (4, 0.9), (5, 1), (6, 0.9), (80, 0)])
-lens!([1, 6], [0.9, 1.1], inset = (1, bbox(0.5, 0.0, 0.4, 0.4)))
+lens!([0.5, 6], [0.8, 1.01], inset = (1, bbox(0.5, 0.0, 0.4, 0.4)))
 
 #' ### Linked axes
 
 x = -5:0.1:5
+plot(plot(x, x -> x^2), plot(x, x -> sin(x)), layout = 2)
 plot(plot(x, x -> x^2), plot(x, x -> sin(x)), layout = 2, link = :y)
+plot(plot(x, x -> x^2), plot(x, x -> sin(x)), layout = 2, link = :both)
 
 #' ### Error bars and array type recipes
 
@@ -393,11 +395,15 @@ surf = Measurement.((1:10) .* (1:10)', rand(10, 10))
 plot(scatter(x, [x y]), scatter(x, y, z), heatmap(x, y, surf),
      wireframe(x, y, surf), legend = :topleft)
 
+plot(x)
+scatter(x)
+
 #' ### Polar heatmaps
 
 x = range(0, 2π, length = 9)
 y = 0:4
 z = (1:4) .+ (1:8)'
+heatmap(x, y, z)
 heatmap(x, y, z, projection = :polar)
 
 #' ### 3D surface with axis guides
