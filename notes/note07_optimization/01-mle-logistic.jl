@@ -29,7 +29,7 @@ CSV.write("test.csv", DataFrame([xtest ytest], nm))
 
 
 # load cleaned data directly
-using CSV, DataFrames, Optim, ForwardDiff, Statistics, LinearAlgebra
+using CSV, DataFrames, Optim, ForwardDiff, Statistics, LinearAlgebra, Random
 df = CSV.read("train.csv", DataFrame)
 x = Array(df[!, 1:5])
 y = Array(df[!, 6])
@@ -44,7 +44,8 @@ mean(y)
 mean(ytest)
 # classification on the test data
 # totally naive prediction
-pre_n = rand(ntest) .<= 0.5
+# pre_n = rand(ntest) .<= 0.5
+pre_n = bitrand(ntest)
 mean(ytest .== pre_n)
 # naive classification without using a regression model
 p_n = mean(y)
@@ -54,7 +55,6 @@ mean(ytest .== pre_n)
 function getMLE(x, y)
     (n, d) = size(x)
     theta = zeros(d)
-    # S = Array{Float64}(undef, n, d)
     S = similar(x)
     H = Array{Float64}(undef, d, d)
     loop = 1;
@@ -73,7 +73,6 @@ function getMLE(x, y)
             println("Maximum iteration reached")
         end
     end
-    # print("loop=$loop======\n")
     return vec(theta), H
 end
 
@@ -106,7 +105,7 @@ t  = est ./ sd
 # using Optim package
 
 function lik(theta) 
-    p = 1 ./ (1 .+ exp.(-x * theta))
+    p = 1 ./ (1 .+ exp.(x * (-theta)))
     return -sum(y .* log.(p) .+ (1 .-y) .* log.(1 .- p))
 end
 

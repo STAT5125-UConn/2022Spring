@@ -3,9 +3,9 @@
 ## Example
 
 - There are 168 hours in a week. Want to allocate our time between
-   - studying (S)
-   - going to parties (P)
-   - everything else (E)
+  - studying (S)
+  - going to parties (P)
+  - everything else (E)
 - To survive: E >= 56
 - For sanity: P+E >= 70
 - To pass courses: S >= 60
@@ -23,11 +23,11 @@
 **Formal Definition**
 
 - Given:
-   - n variables x_1, ..., x_n
-   - m linear inequalities in these variables
+  - n variables x_1, ..., x_n
+  - m linear inequalities in these variables
 - Goal:
-   - Find values for the x_i's that satisfy constraints and maximize or minimize the objective function
-   - In the feasibility problem just satisfy the constraints
+  - Find values for the x_i's that satisfy constraints and maximize or minimize the objective function
+  - In the feasibility problem just satisfy the constraints
 
 ## [JuMP](https://github.com/jump-dev/JuMP.jl)
 
@@ -46,18 +46,14 @@ import Pkg
 Pkg.add("JuMP")
 ```
 
-
-
-
 You also need to include a Julia package which provides an appropriate solver.
 One such solver is `GLPK.Optimizer`, which is provided by the
 [GLPK.jl package](https://github.com/jump-dev/GLPK.jl).
+
 ```julia
 import Pkg
 Pkg.add("GLPK")
 ```
-
-
 
 See [Installation Guide](https://jump.dev/JuMP.jl/stable/installation/) for a list of other solvers you can use.
 
@@ -77,16 +73,25 @@ Here's the problem:
   - 0 <= y <= 3
 
 <!-- ```latex -->
+
 <!-- \begin{aligned} -->
+
 <!-- & \min & 12x + 20y \\ -->
+
 <!-- & \;\;\text{s.t.} & 6x + 8y \geq 100 \\ -->
+
 <!-- & & 7x + 12y \geq 120 \\ -->
+
 <!-- & & x \geq 0 \\ -->
+
 <!-- & & y \in [0, 3] \\ -->
+
 <!-- \end{aligned} -->
+
 <!-- ``` -->
 
 And here's the code to solve this problem:
+
 ```julia
 julia> # We want to use `GLPK.Optimizer` here which is provided by the `GLPK.jl`
        # package.
@@ -141,7 +146,7 @@ julia> # Now let's see what information we can query about the solution.
 OPTIMAL::TerminationStatusCode = 1
 
 julia> # In this case, the solver found an optimal solution.
-       
+
        # Query the objective value using `objective_value`:
        objective_value(model)
 205.0
@@ -151,10 +156,8 @@ julia> # the primal solution using `value`:
 (14.999999999999993, 1.2500000000000047)
 ```
 
-
-
-
 Maximum Happiness
+
 ```julia
 happiness = Model(GLPK.Optimizer)
 @variable(happiness, E >= 56)
@@ -203,12 +206,6 @@ Subject to
 (88.5, 19.5)
 ```
 
-
-
-
-
 Here is some intuition for Linear Programming
 
 ![](intuitionLP.png)
-
-

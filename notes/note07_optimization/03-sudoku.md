@@ -6,20 +6,12 @@ digits already filled in. Your solution must satisfy the following rules:
 * The numbers 1 to 9 must appear in each row
 * The numbers 1 to 9 must appear in each column
 
-
-
 Sudoku has been used in statistics for producing new space-filling design in
 field of experimental design, e.g., [Sudoku-based space-filling designs](https://www.tandfonline.com/doi/abs/10.1080/00031305.2015.1114970?journalCode=utas20) and [Samurai Sudoku-Based Space-Filling Designs](https://academic.oup.com/biomet/article-abstract/98/3/711/236038?redirectedFrom=fulltext)
 
-
-
 Here is a Sudoku game:
 
-
-
 ![Partially solved Sudoku](./sudoku.png)
-
-
 
 Solving a Sudoku isn't an optimization problem with an objective; its actually
 a *feasibility* problem: we wish to find a feasible solution that satisfies
@@ -34,13 +26,10 @@ then we can solve it with any integer programming solver.
 julia> using JuMP, GLPK
 ```
 
-
 We will define a binary variable for each possible number in each possible
 cell:
 `x[i,j,k] = 1 if and only if cell (i,j) has number k`,
 where `i` is the row and `j` is the column.
-
-
 
 Create a model
 
@@ -53,7 +42,6 @@ Model mode: AUTOMATIC
 CachingOptimizer state: EMPTY_OPTIMIZER
 Solver name: GLPK
 ```
-
 
 Create our variables
 
@@ -160,7 +148,6 @@ julia> @variable(sudoku, x[i = 1:9, j = 1:9, k = 1:9], Bin)
  x[9,1,9]  x[9,2,9]  x[9,3,9]  x[9,4,9]     x[9,7,9]  x[9,8,9]  x[9,9,9]
 ```
 
-
 Now we can begin to add our constraints. We'll actually start with something
 obvious to us as humans, but what we need to enforce: that there can be only
 one number per cell.
@@ -173,7 +160,6 @@ julia> for i in 1:9, j in 1:9
        end
 ```
 
-
 Next we'll add the constraints for the rows and the columns. These constraints
 are all very similar, so much so that we can actually add them at the same
 time.
@@ -184,7 +170,6 @@ julia> for ind in 1:9, k in 1:9 ## ind for Each row, OR each column
            @constraint(sudoku, sum(x[i, ind, k] for i in 1:9) == 1) # column constraint
        end
 ```
-
 
 Finally, we have the to enforce the constraint that each digit appears once in
 each of the nine 3x3 sub-grids. Our strategy will be to index over the
@@ -199,12 +184,9 @@ julia> for i in 1:3:7, j in 1:3:7, k in 1:9
        end
 ```
 
-
 The final step is to add the initial solution as a set of constraints. We'll
 solve the problem that is in the picture at the start of the tutorial. We'll
 put a `0` if there is no digit in that location.
-
-
 
 The given digits
 
@@ -238,7 +220,6 @@ julia> for i in 1:9, j in 1:9
        end
 ```
 
-
 solve problem
 
 ```julia
@@ -250,7 +231,6 @@ OPTIMAL::TerminationStatusCode = 1
 julia> objective_value(sudoku)
 0.0
 ```
-
 
 Extract the values of x
 
@@ -357,7 +337,6 @@ julia> x_val = value.(x)
  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  1.0
 ```
 
-
 Create a matrix to store the solution
 
 ```julia
@@ -383,7 +362,6 @@ julia> for i in 1:9, j in 1:9, k in 1:9
        end
 ```
 
-
 Display the solution
 
 ```julia
@@ -400,9 +378,6 @@ julia> sol
  3  4  5  2  8  6  1  7  9
 ```
 
-
 Which is the correct solution:
-
-
 
 ![Solved Sudoku](./sudoku_solved.png)
