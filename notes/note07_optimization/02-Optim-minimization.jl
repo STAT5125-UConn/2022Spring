@@ -69,6 +69,10 @@ Optim.minimizer(res)
 
 #' A primal interior-point algorithm for simple "box" constraints (lower and upper bounds) is available. Reusing our Rosenbrock example from above, boxed minimization is performed as follows:
 
+using Plots; plotly()
+x, y = 1.25:0.05:2, -2.1:0.05:2
+surface(x, y, (x,y)->f([x,y]))
+
 lower = [1.25, -2.1]
 upper = [Inf, Inf]
 initial_x = [2.0, 2.0]

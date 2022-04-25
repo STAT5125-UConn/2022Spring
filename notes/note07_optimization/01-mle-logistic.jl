@@ -79,7 +79,7 @@ end
 # fit a model without intercept
 res = getMLE(x, y)
 η = xtest * res[1]
-p = exp.(η) ./ (1 .+ exp.(η)) 
+# p = exp.(η) ./ (1 .+ exp.(η)) 
 p = 1 ./ (1 .+ exp.(-η)) 
 pre = p .>= 0.5
 # classification with logistic regression
