@@ -48,7 +48,7 @@ Things get strange after we divide the data according different departments. For
 
 Create figure(s) using the Berkeley data to illustrate and interpret the aforementioned paradox. Note that there is no right or wrong for your answer to this question. Just try to be creative and explain your visualization(s).
 
-## Step 2 (Due on Friday April 22 at 8:00 PM ET)
+## Step 2 (Due on Friday April 29 at 8:00 PM ET)
 
 Give another two students (to be specified in the FeedbackList.md) access to your submission repository so that they can push their feedback to it.
 
