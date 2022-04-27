@@ -9,7 +9,7 @@ This project consists of two parts: an oral presentation and a written
 report. You may work alone or work with a partner on the project. If you work
 with a partner, the two students should give the oral presentation together. The
 written report and all source codes should be managed on github.com through the
-[[https://classroom.github.com/a/1e3Frc21][submission link]]. *The written report is due on <2022-05-28 Sat> 8PM*.
+[[https://classroom.github.com/a/1e3Frc21][submission link]]. *The written report is due on <2022-04-29 Fri> 8PM*.
 
 
 * Teams and Topics
